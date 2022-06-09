@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth; 
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
