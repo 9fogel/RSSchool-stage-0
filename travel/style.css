@@ -243,6 +243,67 @@ button:hover {
   align-self: center;
 }
 
+.destinations {
+  padding-bottom: 80px;
+  background-color: #ffffff;
+}
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+}
+
+.slider-list {
+  display: flex;
+  align-self: center;
+  gap: 60px;
+  padding-top: 6px;
+  padding-bottom: 18px;
+  list-style: none;
+}
+
+.slider-item {
+  
+}
+
+.slider-image {
+  border-radius: 16px;
+}
+
+.slider-item-figure {
+  position: relative;
+}
+
+.slider-description {
+  position: absolute;
+  left: 15px;
+  bottom: 46px;
+  font-family: Red_Hat_Text;
+  font-size: 32px;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.pagination-list {
+  display: flex;
+  gap: 10px;
+  align-self: center;
+  padding-bottom: 34px;
+  list-style: none;
+}
+
+.destinations-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 0 auto;
+  width: 228px;
+  height: 59px;
+  font-size: 24px;
+}
+
 .footer {
   min-height: 60px;
   background-color: blue;
