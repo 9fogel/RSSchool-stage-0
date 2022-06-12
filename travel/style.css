@@ -121,7 +121,6 @@ button:hover {
   justify-content: center;
   align-items: center;
   list-style: none;
-  margin-left: 6px;
   font-size: 16px;
 }
 
@@ -130,7 +129,9 @@ button:hover {
 }
 
 .nav-link {
-  padding: 34px 21px;
+  padding-top: 34px;
+  padding-bottom: 34px;
+  padding-right: 42px;
   font-family: Red_Hat_Text;
 }
 
@@ -147,12 +148,19 @@ button:hover {
 }
 
 .main-title {
+  padding-bottom: 32px;
   font-size: 80px;
+  font-weight: 700;
+  line-height: 96px;
 }
 
 .section-title {
+  padding-bottom: 40px;
+  font-family: Red_Hat_Text;
   font-size: 40px;
   text-transform: uppercase;
+  text-align: center;
+  color: #F2785C;
 }
 
 .main {
@@ -160,22 +168,15 @@ button:hover {
 }
 
 .preview {
+  padding-top: 32px;
+  padding-left: 120px;
+  padding-bottom: 254px;
   background-image: url(./assets/img/main-background.jpg);
   background-position-y: -90px;
 }
 
 .preview-content {
   width: 892px;
-  padding-top: 32px;
-  padding-left: 120px;
-  padding-bottom: 188px;
-}
-
-.main-title {
-  padding-bottom: 56px;
-  font-size: 80px;
-  font-weight: 700;
-  line-height: 96px;
 }
 
 .preview-text {
@@ -185,6 +186,7 @@ button:hover {
 }
 
 .search-label {
+  width: 892px;
   position: relative;
 }
 
@@ -201,7 +203,6 @@ button:hover {
   font-style: italic;
   font-size: 24px;
   color: #F2785C;
-
 }
 
 .search-button {
@@ -211,6 +212,35 @@ button:hover {
   width: 228px;
   height: 59px;
   font-size: 24px;
+}
+
+.steps {
+  padding-top: 80px;
+  background-color: #ffffff;
+}
+
+.steps-list {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 131px;
+  padding-bottom: 97px;
+  color: #0D606F;
+  list-style: none;
+}
+
+.steps-item {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.step-item-center {
+  margin-left: 70px;
+}
+
+.step-icon {
+  margin-bottom: 30px;
+  align-self: center;
 }
 
 .footer {
