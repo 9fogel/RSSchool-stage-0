@@ -356,5 +356,31 @@ button:hover {
 
 .footer {
   min-height: 60px;
-  background-color: blue;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 120px;
+  background-image: url(./assets/img/stories-background.jpg);
+  background-position-y: bottom;
+}
+
+.left-icons-list {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.copywrite-text {
+  font-family: Red_Hat_text;
+  font-size: 16px;
+}
+
+.socials-list {
+  display: flex;
+  gap: 20px;
+  height: 34px;
+  list-style: none;
 }
