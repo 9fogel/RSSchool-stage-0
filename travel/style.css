@@ -91,7 +91,7 @@ button:hover {
   min-height: 90px;
 }
 
-.header:before {
+.header::before {
   display: block;
   width: 100%;
   height: 90px;
@@ -161,10 +161,6 @@ button:hover {
   text-transform: uppercase;
   text-align: center;
   color: #F2785C;
-}
-
-.main {
-  background-color: gray;
 }
 
 .preview {
@@ -263,10 +259,6 @@ button:hover {
   list-style: none;
 }
 
-.slider-item {
-  
-}
-
 .slider-image {
   border-radius: 16px;
 }
@@ -293,7 +285,7 @@ button:hover {
   list-style: none;
 }
 
-.destinations-button {
+.arrow-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -302,6 +294,64 @@ button:hover {
   width: 228px;
   height: 59px;
   font-size: 24px;
+}
+
+.stories {
+  background-color: #ffffff;
+}
+
+.stories-cards {
+  position: relative;
+  z-index: 1;
+  padding: 40px 120px;
+  background-image: url(./assets/img/stories-background.jpg);
+}
+
+.stories-cards::before {
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #ffffff;
+  opacity: 0.7;
+}
+
+.card {
+  display: flex;
+  gap: 40px;
+  z-index: 1;
+  padding-bottom: 30px;
+}
+
+.card-image {
+  border-radius: 16px;
+  filter: drop-shadow(0px 4px 4px #0D606F);
+}
+
+.card-description {
+  z-index: 1;
+  color: #0D606F;
+}
+
+.card-title {
+  padding-bottom: 24px;
+  font-size: 35px;
+  line-height: 42px;
+}
+
+.stories-button {
+  position: relative;
+  z-index: 1;
+  margin-top: 10px;
+}
+
+.bold-undelined-text {
+  font-weight: 700;
+  text-decoration: underline;
 }
 
 .footer {
