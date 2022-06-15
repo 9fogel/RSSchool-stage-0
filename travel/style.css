@@ -256,9 +256,18 @@ button:active {
   margin-left: 70px;
 }
 
-.step-icon {
+.step-icon-bg {
+  display: flex;
+  width: 100px;
+  height: 100px;
   margin-bottom: 30px;
   align-self: center;
+  background-color: #F2785C;
+  border-radius: 16px;
+}
+
+.step-icon {
+  margin: auto;
 }
 
 .destinations {
