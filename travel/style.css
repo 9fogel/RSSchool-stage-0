@@ -394,7 +394,7 @@ button:active {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 14px 120px;
+  padding: 11px 120px;
   background-image: url(./assets/img/stories-background.jpg);
   background-position-y: bottom;
 }
