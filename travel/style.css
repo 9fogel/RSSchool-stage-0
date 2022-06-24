@@ -434,15 +434,18 @@ button:active {
 @media (max-width: 768px) {
 
   .header {
+    height: 65px;
     min-height: 65px;
   }
 
   .header-container {
     justify-content: space-between;
+    background-image: url(./assets/img/mobile-background.jpg);
   }
 
   .header-container::before {
-    background: linear-gradient(180deg, #0D606F 0%, rgba(13, 96, 111, 0) 50.1%);
+    height: 250px;
+    background: linear-gradient(180deg, #0D606F 5%, rgba(13, 96, 111, 0) 25.1%);
   }
 
   .logo {
@@ -513,4 +516,12 @@ button:active {
   .logo-text {
     display: none;
   }
+
+  .preview {
+    background-image: url(./assets/img/mobile-background.jpg);
+    background-position-y: -65px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+
 }
