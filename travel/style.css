@@ -106,6 +106,7 @@ button:active {
   align-items: center;
   background-image: url(./assets/img/main-background.jpg);
   background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 .header-container::before {
@@ -432,11 +433,28 @@ button:active {
 
 @media (max-width: 768px) {
 
+  .header {
+    min-height: 65px;
+  }
+
+  .header-container {
+    justify-content: space-between;
+  }
+
+  .header-container::before {
+    background: linear-gradient(180deg, #0D606F 0%, rgba(13, 96, 111, 0) 50.1%);
+  }
+
+  .logo {
+    margin: 45px 0 0 16px;
+  }
+
   .burger {
     display: block;
     position: absolute;
-    top: 0;
+    top: 43px;
     right: 0;
+    margin-right: 20px;
     width: 35px;
     height: 32px;
     background-color: transparent;
@@ -452,5 +470,47 @@ button:active {
     height: 30px;
     background-color: transparent;
     background-image: url(./assets/img/close.svg);
+    border: none;
+  }
+
+  .burger,
+  .nav-close {
+    box-shadow: none;
+  }
+  
+
+  .visually-hidden {
+    display: block;
+  }
+
+  .navigation {
+    position: fixed;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-right: 16px;
+    top: 0;
+    right: 0;
+    font-size: 16px;
+    background-color: #F2785C;
+    border-radius: 10px;
+    box-shadow: 0px 4px 3px 0px #0D606F40;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    align-items: flex-end;
+    padding-top: 44px;
+    padding-bottom: 30px;
+    padding-left: 44px;
+    gap: 10px;
+  }
+
+  .nav-link {
+    padding: 0;
+  }
+
+  .login-button,
+  .logo-text {
+    display: none;
   }
 }
