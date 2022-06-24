@@ -446,6 +446,7 @@ button:active {
   .header-container::before {
     height: 250px;
     background: linear-gradient(180deg, #0D606F 5%, rgba(13, 96, 111, 0) 25.1%);
+    box-shadow: none;
   }
 
   .logo {
