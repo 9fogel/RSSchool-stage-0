@@ -444,6 +444,7 @@ button:active {
   }
 
   .header-container::before {
+    min-width: 320px;
     height: 250px;
     background: linear-gradient(180deg, #0D606F 5%, rgba(13, 96, 111, 0) 25.1%);
     box-shadow: none;
@@ -567,5 +568,82 @@ button:active {
     top: 9px;
     right: 9px;
   }
+
+  .section-title {
+    padding-bottom: 20px;
+    font-size: 14px;
+  }
+
+  .steps,
+  .destinations,
+  .stories {
+    padding-top: 20px;
+  }
+
+  .steps {
+    margin-right: 15px;
+    margin-left: 15px;
+  }
+
+  .steps-list {
+    margin: 0;
+    padding-bottom: 0;
+    font-size: 10px;
+  }
+
+  .steps-item {
+    gap: 4px;
+    justify-content: end;
+  }
+
+  .step-item-center {
+    flex-grow: 5;
+    margin: 0;
+    padding-left: 14px;
+    padding-bottom: 10px;
+    width: 100%;
+  }
+
+  .step-item-left {
+    position: relative;
+    text-align: left;
+    flex-grow: 1;
+  }
+
+  .step-item-right {
+    position: relative;
+    text-align: right;
+    flex-grow: 1;
+  }
+
+  .step-icon-bg {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 19px;
+  }
+
+  .step-icon-bg-left {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .step-icon-bg-right {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .step-icon {
+    height: 70%;
+    width:70%;
+    margin-bottom: 19px;
+  }
+
+  .responsive {
+    width: 50%;
+    height: auto;
+  }
+
 
 }
