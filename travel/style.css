@@ -434,8 +434,8 @@ button:active {
 @media (max-width: 768px) {
 
   .header {
-    height: 65px;
-    min-height: 65px;
+    height: 75px;
+    min-height: 75px;
   }
 
   .header-container {
@@ -482,7 +482,6 @@ button:active {
     box-shadow: none;
   }
   
-
   .visually-hidden {
     display: block;
   }
@@ -491,9 +490,10 @@ button:active {
     position: fixed;
     flex-direction: column;
     justify-content: flex-start;
+    z-index: 5;
     padding-right: 16px;
     top: 0;
-    right: 0;
+    right: -165px;
     font-size: 16px;
     background-color: #F2785C;
     border-radius: 10px;
@@ -514,15 +514,58 @@ button:active {
   }
 
   .login-button,
-  .logo-text {
+  .logo-text,
+  .main-title,
+  .preview-text {
     display: none;
   }
 
   .preview {
+    padding-top: 67px;
+    padding-left: 0;
+    padding-bottom: 61px;
     background-image: url(./assets/img/mobile-background.jpg);
-    background-position-y: -65px;
+    background-position-y: -75px;
     background-size: 100%;
     background-repeat: no-repeat;
+  }
+
+  .preview-content {
+    width: 100%;
+  }
+
+  .search-label {
+    width: min-content;
+    margin: 0 15px;
+  }
+
+  .search-input {
+    position: relative;
+    max-width: 720px;
+    min-width: 360px;
+    /* width: 720px; */
+    height: 48px;
+  }
+
+  .search-input::placeholder {
+    padding-top: 16px;
+    padding-left: 16px;
+    font-size: 14px;
+  }
+
+  button,
+  .search-button,
+  .arrow-button {
+    width: 92px;
+    height: 30px;
+    font-size: 11px;
+    border-radius: 10px;
+  }
+
+  .search-button {
+    position: absolute;
+    top: 9px;
+    right: 9px;
   }
 
 }
