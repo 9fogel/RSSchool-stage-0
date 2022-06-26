@@ -438,6 +438,11 @@ button:active {
     min-height: 75px;
   }
 
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
   .header-container {
     justify-content: space-between;
     background-image: url(./assets/img/mobile-background.jpg);
@@ -446,6 +451,7 @@ button:active {
   .header-container::before {
     min-width: 320px;
     height: 250px;
+    left: 0;
     background: linear-gradient(180deg, #0D606F 5%, rgba(13, 96, 111, 0) 25.1%);
     box-shadow: none;
   }
@@ -522,6 +528,8 @@ button:active {
   }
 
   .preview {
+    margin-left: -15px;
+    margin-right: -15px;
     padding-top: 67px;
     padding-left: 0;
     padding-bottom: 61px;
@@ -578,11 +586,6 @@ button:active {
   .destinations,
   .stories {
     padding-top: 20px;
-  }
-
-  .steps {
-    margin-right: 15px;
-    margin-left: 15px;
   }
 
   .steps-list {
