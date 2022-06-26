@@ -457,7 +457,7 @@ button:active {
   }
 
   .logo {
-    margin: 45px 0 0 16px;
+    margin: 45px 0 0 0;
   }
 
   .burger {
@@ -580,6 +580,7 @@ button:active {
   .section-title {
     padding-bottom: 20px;
     font-size: 14px;
+    line-height: 19px;
   }
 
   .steps,
@@ -595,14 +596,14 @@ button:active {
   }
 
   .steps-item {
-    gap: 4px;
+    gap: 2px;
     justify-content: end;
   }
 
   .step-item-center {
     flex-grow: 5;
     margin: 0;
-    padding-left: 14px;
+    padding-left: 20px;
     padding-bottom: 10px;
     width: 100%;
   }
@@ -647,6 +648,49 @@ button:active {
     width: 50%;
     height: auto;
   }
+  
+  .slider {
+    position: relative;
+    margin-top: 1px;
+  }
 
+  .slider-list {
+    padding-top: 0;
+    padding-bottom: 0;
+    gap: 30px;
+    align-self: flex-start;
+  }
+
+  .desktop {
+    display: none;
+  }
+
+  .slider-description {
+    top: 8px;
+    font-size: 20px;
+  }
+
+  .slider-arrows {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-30%);
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 5px;
+    padding-left: 5px;
+    width: 100%;
+  }
+
+  .pagination-list {
+    margin-top: -20px;
+    padding-bottom: 0;
+    z-index: 1;
+    gap: 6px;
+  }
+
+  .arrow-button {
+    margin-top: 22px;
+  }
 
 }
