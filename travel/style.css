@@ -749,6 +749,61 @@ button:active {
   .arrow-button {
     margin-top: 22px;
   }
+
+  .destinations {
+    padding-bottom: 0;
+  }
+
+  .stories {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+
+  .stories .section-title {
+    padding-bottom: 10px;
+  }
+
+  .stories-cards {
+    padding: 10px 15px;
+    background-image: url(./assets/img/Stories-background-mobile.jpg);
+  }
+
+  .card {
+    gap: 10px;
+    padding-bottom: 15px;
+  }
+
+  .card-description {
+    position: relative;
+    height: 128px;
+  }
+
+  .card-title {
+    padding-top: 5px;
+    padding-bottom: 10px;
+    font-size: 11px;
+    line-height: 13.2px;
+    font-weight: 700;
+  }
+
+  .card-text {
+    height: 87px;
+    overflow: hidden;
+    font-size: 9px;
+    padding: 0;
+  }
+
+  .read-more {
+    position: absolute;
+    bottom: 0;
+    margin-top: -16px;
+    font-size: 9px;
+  }
+
+  .stories-button {
+    margin-top: -5px;
+    margin-bottom: 3px;
+  }
 }
 
 @media (max-width: 320px) {
