@@ -513,6 +513,10 @@ button:active {
     box-shadow: none;
   }
 
+  .header-content {
+    padding: 0;
+  }
+
   .logo {
     margin: 45px 0 0 0;
   }
@@ -820,10 +824,6 @@ button:active {
   .mobile-icons {
     height: 30px;
     opacity: 0.5;
-  }
-
-  .socials-list {
-    /* margin-left: 40px; */
   }
 }
 
