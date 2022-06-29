@@ -149,7 +149,6 @@ button:active {
   margin-left: -30px;
   font-size: 16px;
   line-height: 44px;
-  /* background-color: #f8f8f8; */
 }
 
 .nav-item {
@@ -171,8 +170,7 @@ button:active {
 }
 
 .login-button {
-  width: 103px;
-  height: 41px;
+  padding: 10px 30px;
   z-index: 1;
 }
 
@@ -439,7 +437,58 @@ button:active {
 }
 
 
+@media (max-width: 1200px) {
+
+  .logo-text {
+    font-size: 16px;
+    width: 40px;
+  }
+
+  .nav-list {
+    margin-left: 0;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+
+  .header-content {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+
+  .nav-list {
+    font-size: 12px;
+  }
+
+  .login-button {
+    font-size: 12px;
+  }
+}
+
 @media (max-width: 768px) {
+
+  .header-content {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .logo-text {
+    display: none;
+  }
+
+  .nav-list {
+    gap: 10px;
+  }
+
+  .login-button {
+    padding: 4px 15px;
+    font-size: 12px;
+  }
+}
+
+
+@media (max-width: 390px) {
 
   .header {
     height: 75px;
@@ -700,5 +749,8 @@ button:active {
   .arrow-button {
     margin-top: 22px;
   }
+}
+
+@media (max-width: 320px) {
 
 }
