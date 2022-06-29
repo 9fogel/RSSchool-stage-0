@@ -566,6 +566,12 @@ button:active {
     background-color: #F2785C;
     border-radius: 10px;
     box-shadow: 0px 4px 3px 0px #0D606F40;
+    transition: transform 0.6s ease-in-out;
+  }
+
+  .navigation-active {
+    transform: translateX(-165px);
+    transition: transform 0.6s ease-in-out;
   }
 
   .nav-list {
@@ -574,7 +580,9 @@ button:active {
     padding-top: 44px;
     padding-bottom: 30px;
     padding-left: 44px;
-    gap: 10px;
+    gap: 9px;
+    font-size: 16px;
+    line-height: 21px;
   }
 
   .nav-link {
