@@ -193,13 +193,14 @@ button:active {
 .preview {
   padding-top: 32px;
   padding-left: 120px;
+  padding-right: 120px;
   padding-bottom: 254px;
   background-image: url(./assets/img/main-background.jpg);
   background-position-y: -90px;
 }
 
 .preview-content {
-  width: 892px;
+  max-width: 892px;
 }
 
 .preview-text {
@@ -209,7 +210,7 @@ button:active {
 }
 
 .search-label {
-  width: 892px;
+  width: 100%;
   position: relative;
 }
 
@@ -452,6 +453,10 @@ button:active {
 
 @media (max-width: 1024px) {
 
+  body {
+    font-size: 14px;
+  }
+
   .header-content {
     padding-left: 60px;
     padding-right: 60px;
@@ -460,9 +465,39 @@ button:active {
   .nav-list {
     font-size: 12px;
   }
-
+  
   .login-button {
     font-size: 12px;
+  }
+
+  .main-title {
+    padding-bottom: 16px;
+    font-size: 60px;
+    line-height: 72px;
+  }
+
+  .preview {
+    padding-bottom: 160px;
+  }
+
+  .preview-text {
+    padding-bottom: 24px;
+  }
+
+  .search-input {
+    height: 72px;
+  }
+
+  .search-input::placeholder {
+    font-size: 16px;
+    padding-left: 24px;
+  }
+
+  .search-button {
+    top: 9px;
+    right: 9px;
+    height: 54px;
+    font-size: 16px;
   }
 }
 
@@ -484,6 +519,17 @@ button:active {
   .login-button {
     padding: 4px 15px;
     font-size: 12px;
+  }
+
+  .preview {
+    padding-right: 60px;
+    padding-left: 60px;
+    padding-top: 24px;
+    padding-bottom: 120px;
+  }
+
+  .search-button {
+    width: 164px;
   }
 }
 
@@ -619,9 +665,7 @@ button:active {
 
   .search-input {
     position: relative;
-    max-width: 720px;
-    min-width: 360px;
-    /* width: 720px; */
+    width: 360px;
     height: 48px;
   }
 
