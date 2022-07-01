@@ -506,12 +506,17 @@ button:active {
     font-size: 16px;
     padding-left: 24px;
   }
-
+  
+  .arrow-button,
   .search-button {
     top: 9px;
     right: 9px;
     height: 54px;
     font-size: 16px;
+  }
+
+  .arrow-button-icon {
+    width: 30px;
   }
 
   .steps {
@@ -533,6 +538,25 @@ button:active {
   .step-icon {
     height: 50%;
     width: 50%;
+  }
+
+  .slider-list {
+    gap: 30px;
+    padding-bottom: 12px;
+  }
+
+  .slider-description {
+    left: 15px;
+    bottom: 15px;
+    font-size: 24px;
+  }
+
+  .pagination-list {
+    padding-bottom: 24px;
+  }
+
+  .destinations {
+    padding-bottom: 64px;
   }
 }
 
@@ -571,9 +595,17 @@ button:active {
     width: 164px;
   }
 
+  .section-title {
+    padding-bottom: 24px;
+  }
+
   .steps-list {
     margin-right: 72px;
     margin-left: 72px;
+  }
+
+  .slider-list {
+    padding-top: 0;
   }
 }
 
@@ -631,8 +663,16 @@ button:active {
     margin-right: 30px;
     margin-left: 30px;
   }
-}
 
+  .slider-list {
+    gap: 15px;
+    padding-bottom: 8px;
+  }
+
+  .arrow-button-icon {
+    width: 10px;
+  }
+}
 
 @media (max-width: 390px) {
 
