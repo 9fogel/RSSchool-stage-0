@@ -1014,4 +1014,8 @@ button:active {
 
 @media (max-width: 320px) {
 
+  .slider-arrows {
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }
