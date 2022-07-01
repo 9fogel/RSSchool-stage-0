@@ -2,7 +2,6 @@ const navigation = document.querySelector('.navigation');
 const burgerMenu = document.querySelector('.burger');
 const closeMenuButton = document.querySelector('.nav-close');
 const navList = document.querySelector('.nav-list');
-// const emptySpace
 
 burgerMenu.onclick = function () {
   navigation.classList.add('navigation-active');
@@ -16,9 +15,12 @@ navList.onclick = function () {
   navigation.classList.remove('navigation-active');
 }
 
-// emptySpace.onclick = function () {
-//   navigation.classList.remove('navigation-active');
-// }
+document.addEventListener('click', (event) => {
+  if (event.target != burgerMenu) {
+    navigation.classList.remove('navigation-active');
+  }
+  
+})
 
 
 
