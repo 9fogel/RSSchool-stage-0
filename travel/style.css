@@ -1132,13 +1132,39 @@ button:active {
 }
 
 @media (max-width: 360px) {
+
+  .header-container::before {
+    height: 230px;
+  }
+
+  .preview {
+    padding-bottom: 24px;
+  }
+
   .card-text {
     -webkit-line-clamp: 7;
+  }
+
+  .step-item-center {
+    padding-bottom: 0;
+    width: 50%;
+  }
+  
+  .step-icon-bg {
+    margin-bottom: 12px;
   }
 }
 
 
 @media (max-width: 320px) {
+
+  .header-container::before {
+    height: 200px;
+  }
+
+  .preview {
+    padding-bottom: 12px;
+  }
 
   .slider-arrows {
     top: 50%;
