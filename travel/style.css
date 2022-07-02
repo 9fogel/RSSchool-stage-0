@@ -942,41 +942,44 @@ button:active {
     padding-top: 20px;
   }
 
-  .steps-list {
-    margin: 0;
+  .steps {
     padding-bottom: 0;
+  }
+
+  .steps-list {
+    gap: 1px;
+    margin: 0;
+    padding-bottom: 20px;
     font-size: 10px;
   }
 
   .steps-item {
-    gap: 2px;
     justify-content: end;
-  }
-
-  .step-item-center {
-    flex-grow: 5;
-    margin: 0;
-    padding-left: 20px;
-    padding-bottom: 10px;
-    width: 100%;
   }
 
   .step-item-left {
     position: relative;
+    flex-basis: 138px;
+    /* padding-right: 12px; */
     text-align: left;
-    flex-grow: 1;
+  }
+
+  .step-item-center {
+    margin: 0;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    width: 100%;
   }
 
   .step-item-right {
     position: relative;
     text-align: right;
-    flex-grow: 1;
   }
 
   .step-icon-bg {
     width: 70px;
     height: 70px;
-    margin-bottom: 19px;
+    margin-bottom: 22px;
   }
 
   .step-icon-bg-left {
@@ -1083,10 +1086,9 @@ button:active {
   }
 
   .card-text {
-    height: 87px;
-    overflow: hidden;
-    font-size: 9px;
     padding: 0;
+    font-size: 9px;
+    -webkit-line-clamp: 8;
   }
 
   .read-more {
@@ -1123,11 +1125,18 @@ button:active {
   }
 
   .stories-button {
-    margin-top: 2px;
-    margin-bottom: 13px;
+    margin-top: 1px;
+    margin-bottom: 11px;
     right: 0;
   }
 }
+
+@media (max-width: 360px) {
+  .card-text {
+    -webkit-line-clamp: 7;
+  }
+}
+
 
 @media (max-width: 320px) {
 
