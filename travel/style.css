@@ -608,6 +608,10 @@ button:active {
     width: 50%;
   }
 
+  .copywrite-text {
+    font-size: 12px;
+  }
+
 }
 
 @media (max-width: 768px) {
@@ -683,6 +687,19 @@ button:active {
 
   .read-more {
     font-size: 14px;
+  }
+
+  .footer-container {
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+  }
+
+  .copywrite {
+    order: 2;
+    margin: 0 auto;
+    text-align: center;
+    /* padding-top: 6px; */
   }
 }
 
@@ -779,6 +796,10 @@ button:active {
 
   .stories-button {
     margin-top: 0;
+  }
+
+  .copywrite-text {
+    font-size: 9px;
   }
 }
 
