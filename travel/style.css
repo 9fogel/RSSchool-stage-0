@@ -1130,6 +1130,7 @@ button:active {
 
   .footer-container {
     justify-content: flex-end;
+    flex-wrap: nowrap;
     gap: 20px;
     padding-top: 15px;
     padding-bottom: 15px;
