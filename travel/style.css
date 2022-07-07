@@ -55,18 +55,18 @@ body {
   color: #ffffff;
 }
 
-/* .overlay {
+.wrapper-overlay::before {
   display: block;
   position: fixed;
   top: 0;
   left: 0;
   height: 100vh;
   width: 100%;
-  z-index: 5;
+  z-index: 3;
   content: '';
   background-color: #000000;
-  opacity: 0.4;
-} */
+  opacity: 0.25;
+}
 
 ul {
   margin: 0;
@@ -817,6 +817,11 @@ button:active {
 }
 
 @media (max-width: 391px) {
+
+
+  .wrapper-overlay::before {
+    opacity: 0.4;
+  }
 
   .header {
     height: 75px;
