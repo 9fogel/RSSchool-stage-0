@@ -2,13 +2,16 @@ const navigation = document.querySelector('.navigation');
 const burgerMenu = document.querySelector('.burger');
 const closeMenuButton = document.querySelector('.nav-close');
 const navList = document.querySelector('.nav-list');
+const body = document.querySelector('body');
 
 burgerMenu.onclick = function () {
   navigation.classList.add('navigation-active');
+  // body.classList.add('overlay');
 }
 
 closeMenuButton.onclick = function () {
   navigation.classList.remove('navigation-active');
+  // body.classList.remove('overlay');
 }
 
 navList.onclick = function () {

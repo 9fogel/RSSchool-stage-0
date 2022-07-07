@@ -55,6 +55,19 @@ body {
   color: #ffffff;
 }
 
+/* .overlay {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  z-index: 5;
+  content: '';
+  background-color: #000000;
+  opacity: 0.4;
+} */
+
 ul {
   margin: 0;
   padding: 0;
@@ -803,7 +816,7 @@ button:active {
   }
 }
 
-@media (max-width: 390px) {
+@media (max-width: 391px) {
 
   .header {
     height: 75px;
