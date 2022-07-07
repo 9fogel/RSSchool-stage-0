@@ -2,25 +2,27 @@ const navigation = document.querySelector('.navigation');
 const burgerMenu = document.querySelector('.burger');
 const closeMenuButton = document.querySelector('.nav-close');
 const navList = document.querySelector('.nav-list');
-const body = document.querySelector('body');
+const wrapper = document.querySelector('.wrapper');
 
 burgerMenu.onclick = function () {
   navigation.classList.add('navigation-active');
-  // body.classList.add('overlay');
+  wrapper.classList.add('wrapper-overlay');
 }
 
 closeMenuButton.onclick = function () {
   navigation.classList.remove('navigation-active');
-  // body.classList.remove('overlay');
+  wrapper.classList.remove('wrapper-overlay');
 }
 
 navList.onclick = function () {
   navigation.classList.remove('navigation-active');
+  wrapper.classList.remove('wrapper-overlay');
 }
 
 document.addEventListener('click', (event) => {
   if (event.target != burgerMenu) {
     navigation.classList.remove('navigation-active');
+    wrapper.classList.remove('wrapper-overlay');
   }
   
 })
