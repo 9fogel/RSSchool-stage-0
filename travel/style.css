@@ -525,15 +525,38 @@ button:active {
 }
 
 .divider {
+  position: relative;
   height: 24px;
   width: 100%;
   text-transform: lowercase;
   text-align: center;
   opacity: 50%;
-  background-color: #18a2bb;
+  /* background-color: #18a2bb; */
 }
 
-/* .divider::before */
+.divider-line {
+  display: block;
+}
+
+.divider-line-left::before {
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 47%;
+  height: 1px;
+  content: '';
+  background-color:#0a3f49;
+}
+
+.divider-line-right::before {
+  position: absolute;
+  right: 0;
+  top: 12px;
+  width: 47%;
+  height: 1px;
+  content: '';
+  background-color:#0a3f49;
+}
 
 .form-sign-in {
   display: flex;
@@ -580,10 +603,19 @@ button:active {
 .forgot-psw-link:hover,
 .register-link:hover {
   cursor: pointer;
-color: #F2785C;
-transition: ease-in-out .3s;
+  color: #F2785C;
+  transition: ease-in-out .3s;
 }
 
+.divider-line::before {
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 100%;
+  height: 1px;
+  content: '';
+  background-color:#0a3f49;
+}
 
 .register {
   padding-top: 10px;
