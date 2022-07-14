@@ -472,13 +472,17 @@ button:active {
 
 /* pop-up styles */
 .login-pop-up {
+  position: fixed;
+  top: 155px;
+  left: 50%;
+  z-index: 10;
+  transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 650px;
-  /* width: 100%; */
-  height: 100%;
-  margin: 155px auto;
+  /* height: 100%; */
+  margin: 0 auto;
   padding: 25px 45px;
   color: #0D606F;
   background: linear-gradient(177.09deg, #FFFFFF 6.15%, #0D606F 202.69%);
@@ -531,7 +535,6 @@ button:active {
   text-transform: lowercase;
   text-align: center;
   opacity: 50%;
-  /* background-color: #18a2bb; */
 }
 
 .divider-line {
