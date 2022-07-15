@@ -14,26 +14,80 @@ const forgotPsw = document.querySelector('.forgot-psw-wrapper');
 const hiddenElements = [socialsLogin, dividerSocials, forgotPsw];
 
 
-// const hiddenPopUp = [];
-
 loginButton.onclick = function () {
   loginPopUp.classList.add('pop-up-active');
   // wrapperLogin.classList.add('wrapper-overlay');
 }
 
-registerLink.onclick = function () {
-  popUpTitle.innerHTML = 'Create account';
-  signInDirectlyBtn.innerHTML = 'Sign Up';
-  noAccount.innerHTML = 'Already have an account?';
-  registerLink.innerHTML = 'Log in';
+registerLink.addEventListener('click', (event) => {
+  if (registerLink.innerHTML === 'Register') {
+    popUpTitle.innerHTML = 'Create account';
+    signInDirectlyBtn.innerHTML = 'Sign Up';
+    noAccount.innerHTML = 'Already have an account?';
+    registerLink.innerHTML = 'Log in';
 
-  popUpTitle.style.marginBottom = '20px';
+    popUpTitle.style.marginBottom = '20px';
 
-  hiddenElements.forEach((hiddenEl) => {
-    hiddenEl.style.display = 'none';
-  });
-  console.log('registration');
-}
+    hiddenElements.forEach((hiddenEl) => {
+      hiddenEl.style.display = 'none';
+    });
+
+    console.log('Клик register');
+  } 
+  
+  if (registerLink.innerHTML === 'Log in') {
+    registerLink.onclick = function () {
+      popUpTitle.innerHTML = 'Log in to your account';
+      signInDirectlyBtn.innerHTML = 'Sign In';
+      noAccount.innerHTML = 'Don’t have an account?';
+      registerLink.innerHTML = 'Register';
+
+      popUpTitle.style.marginBottom = '0px';
+
+      hiddenElements.forEach((hiddenEl) => {
+        hiddenEl.style.display = 'flex';
+      });
+    }
+    console.log('Клик Log In');
+  }
+});
+
+
+// if (registerLink.innerHTML === 'Register') {
+//   registerLink.onclick = function () {
+//     popUpTitle.innerHTML = 'Create account';
+//     signInDirectlyBtn.innerHTML = 'Sign Up';
+//     noAccount.innerHTML = 'Already have an account?';
+//     registerLink.innerHTML = 'Log in';
+
+//     popUpTitle.style.marginBottom = '20px';
+
+//     hiddenElements.forEach((hiddenEl) => {
+//       hiddenEl.style.display = 'none';
+//     });
+//   }
+
+//   if (registerLink.innerHTML === 'Log in') {
+//     registerLink.onclick = function () {
+//       popUpTitle.innerHTML = 'Log in to your account';
+//       signInDirectlyBtn.innerHTML = 'Sign In';
+//       noAccount.innerHTML = 'Don’t have an account?';
+//       registerLink.innerHTML = 'Register';
+
+//       popUpTitle.style.marginBottom = '0px';
+
+//       hiddenElements.forEach((hiddenEl) => {
+//         hiddenEl.style.display = 'flex';
+//       });
+//     }
+//   }
+
+// }
+
+
+
+
+
 
 document.addEventListener('click', (event) => {
     if (event.target != loginPopUp && event.target != loginButton && event.target != registerLink) {

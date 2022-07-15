@@ -551,6 +551,11 @@ button:active {
   opacity: 50%;
 }
 
+.divider-socials {
+  display: flex;
+  justify-content: center;
+}
+
 .divider-line {
   display: block;
 }
@@ -625,7 +630,7 @@ button:active {
 }
 
 .forgot-psw-wrapper {
-  display: block;
+  display: flex;
   margin-bottom: 10px;
 }
 
