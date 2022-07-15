@@ -61,6 +61,11 @@ body {
   color: #ffffff;
 }
 
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
 .wrapper-overlay::before {
   display: block;
   position: fixed;
@@ -472,11 +477,11 @@ button:active {
 
 /* pop-up styles */
 .login-pop-up {
-  position: fixed;
-  top: 155px;
-  left: 50%;
+  position: absolute;
+  top: -700px;
+  align-self: center;
+  transition: transform 0.6s ease-in-out;
   z-index: 10;
-  transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -488,6 +493,11 @@ button:active {
   background: linear-gradient(177.09deg, #FFFFFF 6.15%, #0D606F 202.69%);
   box-shadow: 0px 4px 4px 0px #00000040;
   border-radius: 16px;
+}
+
+.pop-up-active {
+  transform: translateY(855px);
+  transition: transform 0.6s ease-in-out;
 }
 
 .pop-up-title {
