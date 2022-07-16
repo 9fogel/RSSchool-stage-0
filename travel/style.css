@@ -733,6 +733,14 @@ button:active {
     font-size: 14px;
   }
 
+  .pop-up-active {
+    transform: translateY(800px);
+  }
+
+  .divider-or {
+    font-size: 20px;
+  }
+
   .header-content {
     padding-left: 60px;
     padding-right: 60px;
@@ -841,6 +849,57 @@ button:active {
 }
 
 @media (max-width: 768px) {
+  
+  .login-pop-up {
+    width: 460px;
+  }
+
+  .pop-up-active {
+    transform: translateY(750px);
+  }
+
+  .pop-up-title {
+    font-size: 24px;
+  }
+
+  .sign-in-button {
+    width: 100%;
+    font-size: 16px;
+  }
+  
+  .divider {
+    height: 20px;
+    opacity: 0.6;
+  }
+
+  .divider-line-left::before,
+  .divider-line-right::before {
+    top: 10px;
+    width: 45%;
+  }
+
+  .divider-or {
+    font-size: 16px;
+  }
+
+  .pop-up-label {
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .forgot-psw-link,
+  .register-link,
+  .no-account {
+    font-size: 11px;
+  }
+
+  .forgot-psw-wrapper {
+    margin-bottom: 4px;
+  }
+  
+  .no-account {
+    opacity: 0.7;
+  }
 
   .header-content {
     padding-left: 30px;
@@ -930,6 +989,31 @@ button:active {
 }
 
 @media (max-width: 500px) {
+
+  .login-pop-up {
+    width: 380px;
+  }
+
+  .socials-login {
+    padding: 20px 0;
+  }
+
+  .sign-in-button {
+    font-size: 12px;
+    padding: 10px 0;
+  }
+
+  .input-label {
+    gap: 4px;
+  }
+
+  .input-field {
+    padding: 10px 16px;
+  }
+
+  .sign-in-directly {
+    padding: 14px 0;
+  }
 
   .header-content {
     flex-wrap: wrap;
@@ -1030,7 +1114,41 @@ button:active {
 }
 
 @media (max-width: 391px) {
+  
+  .login-pop-up {
+    width: 300px;
+  }
 
+  .pop-up-title {
+    font-size: 20px;
+  }
+
+  .socials-login {
+    gap: 16px;
+  }
+
+  .socials-sign-in {
+    gap: 10px;
+  }
+
+  .sign-in-button {
+    height: auto;
+    font-size: 12px;
+  }
+
+  .divider-line-left::before,
+  .divider-line-right::before {
+    top: 10px;
+    width: 40%;
+  }
+
+  .form-sign-in {
+    gap: 16px;
+  }
+
+  .input-field {
+    font-size: 16px;
+  }
 
   .wrapper-overlay::before {
     opacity: 0.4;
@@ -1212,7 +1330,6 @@ button:active {
   .step-item-left {
     position: relative;
     flex-basis: 138px;
-    /* padding-right: 12px; */
     text-align: left;
   }
 
