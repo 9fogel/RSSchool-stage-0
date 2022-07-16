@@ -3,6 +3,8 @@ const loginPopUp = document.querySelector('.login-pop-up');
 const wrapperLogin = document.querySelector('.wrapper');
 const registerLink = document.querySelector('.register-link');
 
+const inputs = document.querySelectorAll('.input-field');
+
 const popUpTitle = document.querySelector('.pop-up-title');
 const noAccount = document.querySelector('.no-account');
 const signInDirectlyBtn = document.querySelector('.sign-in-directly');
@@ -13,10 +15,22 @@ const forgotPsw = document.querySelector('.forgot-psw-wrapper');
 
 const hiddenElements = [socialsLogin, dividerSocials, forgotPsw];
 
+const signInForm = document.querySelector('.form-sign-in');
+
 
 loginButton.onclick = function () {
   loginPopUp.classList.add('pop-up-active');
   // wrapperLogin.classList.add('wrapper-overlay');
+}
+
+signInDirectlyBtn.onclick = function () {
+  let email = inputs[0].value;
+  let password = inputs[1]. value;
+  if (signInDirectlyBtn.textContent === 'Sign In') {
+    alert(`Введены данные для входа:\nEmail: ${email}\nPassword: ${password}`);
+  } else {
+    alert(`Введены данные для регистрации:\nEmail: ${email}\nPassword: ${password}`);
+  }
 }
 
 registerLink.addEventListener('click', (event) => {
@@ -32,7 +46,7 @@ registerLink.addEventListener('click', (event) => {
       hiddenEl.style.display = 'none';
     });
 
-    console.log('Клик register');
+    // console.log('Клик register');
   } 
   
   if (registerLink.innerHTML === 'Log in') {
@@ -48,9 +62,18 @@ registerLink.addEventListener('click', (event) => {
         hiddenEl.style.display = 'flex';
       });
     }
-    console.log('Клик Log In');
+    // console.log('Клик Log In');
   }
 });
+
+//ПЕРЕДЕЛАТЬ
+
+// document.addEventListener('click', (event) => {
+//     if (event.target != loginPopUp && event.target != loginButton && event.target != registerLink && event.target != signInForm) {
+//       loginPopUp.classList.remove('pop-up-active');
+//       // wrapperLogin.classList.remove('wrapper-overlay');
+//     }
+// });
 
 
 // if (registerLink.innerHTML === 'Register') {
@@ -83,15 +106,3 @@ registerLink.addEventListener('click', (event) => {
 //   }
 
 // }
-
-
-
-
-
-
-document.addEventListener('click', (event) => {
-    if (event.target != loginPopUp && event.target != loginButton && event.target != registerLink) {
-      loginPopUp.classList.remove('pop-up-active');
-      // wrapperLogin.classList.remove('wrapper-overlay');
-    }
-});
