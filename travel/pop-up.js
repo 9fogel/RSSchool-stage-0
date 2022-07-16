@@ -46,8 +46,7 @@ signInDirectlyBtn.onclick = function () {
   }
 }
 
-//Form switch (login - create account)
-registerLink.addEventListener('click', (event) => {
+const toLogin = () => {
   if (registerLink.innerHTML === 'Register') {
     popUpTitle.innerHTML = 'Create account';
     signInDirectlyBtn.innerHTML = 'Sign Up';
@@ -59,55 +58,19 @@ registerLink.addEventListener('click', (event) => {
     hiddenElements.forEach((hiddenEl) => {
       hiddenEl.style.display = 'none';
     });
+  } else {
+    popUpTitle.innerHTML = 'Log in to your account';
+    signInDirectlyBtn.innerHTML = 'Sign In';
+    noAccount.innerHTML = 'Don’t have an account?';
+    registerLink.innerHTML = 'Register';
 
-    // console.log('Клик register');
-  } 
-  
-  if (registerLink.innerHTML === 'Log in') {
-    registerLink.onclick = function () {
-      popUpTitle.innerHTML = 'Log in to your account';
-      signInDirectlyBtn.innerHTML = 'Sign In';
-      noAccount.innerHTML = 'Don’t have an account?';
-      registerLink.innerHTML = 'Register';
+    popUpTitle.style.marginBottom = '0px';
 
-      popUpTitle.style.marginBottom = '0px';
+    hiddenElements.forEach((hiddenEl) => {
+      hiddenEl.style.display = 'flex';
+    });
 
-      hiddenElements.forEach((hiddenEl) => {
-        hiddenEl.style.display = 'flex';
-      });
-    }
-    // console.log('Клик Log In');
   }
-});
+}
 
-
-// if (registerLink.innerHTML === 'Register') {
-//   registerLink.onclick = function () {
-//     popUpTitle.innerHTML = 'Create account';
-//     signInDirectlyBtn.innerHTML = 'Sign Up';
-//     noAccount.innerHTML = 'Already have an account?';
-//     registerLink.innerHTML = 'Log in';
-
-//     popUpTitle.style.marginBottom = '20px';
-
-//     hiddenElements.forEach((hiddenEl) => {
-//       hiddenEl.style.display = 'none';
-//     });
-//   }
-
-//   if (registerLink.innerHTML === 'Log in') {
-//     registerLink.onclick = function () {
-//       popUpTitle.innerHTML = 'Log in to your account';
-//       signInDirectlyBtn.innerHTML = 'Sign In';
-//       noAccount.innerHTML = 'Don’t have an account?';
-//       registerLink.innerHTML = 'Register';
-
-//       popUpTitle.style.marginBottom = '0px';
-
-//       hiddenElements.forEach((hiddenEl) => {
-//         hiddenEl.style.display = 'flex';
-//       });
-//     }
-//   }
-
-// }
+registerLink.onclick = toLogin;
