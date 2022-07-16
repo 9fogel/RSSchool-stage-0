@@ -1,4 +1,5 @@
 const loginButton = document.querySelector('.login-button');
+const mobileLogin = document.querySelector('.mobile-login');
 const loginPopUp = document.querySelector('.login-pop-up');
 const popUpWrapper = document.querySelector('.login-pop-up-wrapper');
 // const wrapperLogin = document.querySelector('.wrapper');
@@ -27,6 +28,11 @@ loginButton.onclick = function () {
 popUpWrapper.onclick = function () {
   loginPopUp.classList.toggle('pop-up-active');
   popUpWrapper.classList.toggle('pop-up-wrapper-hidden');
+}
+
+mobileLogin.onclick = function () {
+  loginPopUp.classList.toggle('pop-up-active');
+  popUpWrapper.classList.toggle('pop-up-wrapper-hidden');  
 }
 
 //Sign in button click + alert
