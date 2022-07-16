@@ -1,6 +1,7 @@
 const loginButton = document.querySelector('.login-button');
 const loginPopUp = document.querySelector('.login-pop-up');
-const wrapperLogin = document.querySelector('.wrapper');
+const popUpWrapper = document.querySelector('.login-pop-up-wrapper');
+// const wrapperLogin = document.querySelector('.wrapper');
 const registerLink = document.querySelector('.register-link');
 
 const inputs = document.querySelectorAll('.input-field');
@@ -17,12 +18,18 @@ const hiddenElements = [socialsLogin, dividerSocials, forgotPsw];
 
 const signInForm = document.querySelector('.form-sign-in');
 
-
+//Login pop-up apperance-closure
 loginButton.onclick = function () {
-  loginPopUp.classList.add('pop-up-active');
-  // wrapperLogin.classList.add('wrapper-overlay');
+  loginPopUp.classList.toggle('pop-up-active');
+  popUpWrapper.classList.toggle('pop-up-wrapper-hidden');
 }
 
+popUpWrapper.onclick = function () {
+  loginPopUp.classList.toggle('pop-up-active');
+  popUpWrapper.classList.toggle('pop-up-wrapper-hidden');
+}
+
+//Sign in button click
 signInDirectlyBtn.onclick = function () {
   let email = inputs[0].value;
   let password = inputs[1]. value;
@@ -33,6 +40,7 @@ signInDirectlyBtn.onclick = function () {
   }
 }
 
+//Form switch (login - create account)
 registerLink.addEventListener('click', (event) => {
   if (registerLink.innerHTML === 'Register') {
     popUpTitle.innerHTML = 'Create account';
@@ -65,15 +73,6 @@ registerLink.addEventListener('click', (event) => {
     // console.log('Клик Log In');
   }
 });
-
-//ПЕРЕДЕЛАТЬ
-
-// document.addEventListener('click', (event) => {
-//     if (event.target != loginPopUp && event.target != loginButton && event.target != registerLink && event.target != signInForm) {
-//       loginPopUp.classList.remove('pop-up-active');
-//       // wrapperLogin.classList.remove('wrapper-overlay');
-//     }
-// });
 
 
 // if (registerLink.innerHTML === 'Register') {
