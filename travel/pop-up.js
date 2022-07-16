@@ -21,7 +21,7 @@ const signInForm = document.querySelector('.form-sign-in');
 //Login pop-up apperance-closure
 loginButton.onclick = function () {
   loginPopUp.classList.toggle('pop-up-active');
-  popUpWrapper.classList.toggle('pop-up-wrapper-hidden');
+  popUpWrapper.classList.toggle('pop-up-wrapper-hidden');  
 }
 
 popUpWrapper.onclick = function () {
@@ -29,7 +29,7 @@ popUpWrapper.onclick = function () {
   popUpWrapper.classList.toggle('pop-up-wrapper-hidden');
 }
 
-//Sign in button click
+//Sign in button click + alert
 signInDirectlyBtn.onclick = function () {
   let email = inputs[0].value;
   let password = inputs[1]. value;
