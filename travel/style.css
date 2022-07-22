@@ -322,7 +322,64 @@ button:active {
   padding-top: 6px;
   padding-bottom: 18px;
   list-style: none;
+  transition: ease-in-out .4s;
 }
+
+/* .slider-item {
+  animation: 0.5s ease-in-out;
+} */
+
+.slider-item:hover {
+  cursor: pointer;
+  transform: scale(1.03);
+  transition: ease-in-out .4s;
+}
+
+/* .slider-item {
+  transform: translateX(calc(100% + 60px));
+} */
+
+.to-left {
+  transition: ease-in-out .4s;
+  transform: translateX(calc(-860/2520*100%));
+  /* animation-name: left; */
+}
+
+.to-right {
+  transition: ease-in-out .4s;
+  transform: translateX(calc(860/2520*100%));
+  /* transform: translateX(calc(50% + 60px)); */
+  /* animation-name: right;
+  animation-direction: reverse; */
+}
+
+/* .from-left {
+  animation-name: left;
+  animation-direction: reverse;
+}
+
+.from-right {
+  animation-name: right;
+}
+
+@keyframes left {
+  from {
+    left: 0;
+  }
+  to {
+    left: -100%;
+  }
+}
+
+@keyframes right {
+  from {
+    left: 100%;
+  }
+  to {
+    left: 0;
+  }
+} */
+
 
 .slider-image {
   border-radius: 16px;
@@ -671,6 +728,43 @@ button:active {
   font-size: 15px;
   opacity: 0.5;
 }
+
+/* slider */
+/* .slider {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+} */
+
+/* .slider-item {
+  display: none;
+  position: relative;
+  margin: 0 auto;
+}
+
+.active-item
+.next-item {
+  display: block;
+} */
+
+/* .item-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+} */
+
+/* .next-item {
+  position: absolute;
+  top: 0;
+  width: 100%;
+} */
+
+.active-item
+.left-item
+.right-item
+.next-item
 
 @media (max-width: 1434px) {
 
@@ -1406,6 +1500,7 @@ button:active {
     padding-right: 5px;
     padding-left: 5px;
     width: 100%;
+    cursor: pointer;
   }
 
   .pagination-list {
