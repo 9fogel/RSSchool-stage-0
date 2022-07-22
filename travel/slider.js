@@ -1,25 +1,36 @@
 let slider = document.querySelector('.slider-list');
 let sliderItems = document.querySelectorAll('.slider-item');
+let paginationCircles = document.querySelectorAll('.pagination-circle');
 
 sliderItems.forEach((sliderItem) => {
   sliderItem.onclick = function () {
     if (sliderItem.classList.contains('left-item')) {
       slider.classList.add('to-right');
       document.querySelector('.active-item').classList.add('.moved-right');
+      paginationCircles[0].setAttribute('src', './assets/img/pagination-active.svg');
+      paginationCircles[1].setAttribute('src', './assets/img/pagination.svg');
     } else if (sliderItem.classList.contains('right-item')) {
       slider.classList.add('to-left');
       document.querySelector('.active-item').classList.add('.moved-left');
+      paginationCircles[2].setAttribute('src', './assets/img/pagination-active.svg');
+      paginationCircles[1].setAttribute('src', './assets/img/pagination.svg');
     } else if (sliderItem.classList.contains('active-item')) {
       if (document.querySelector('.active-item').classList.contains('.moved-right')) {
         slider.classList.remove('to-right');
         document.querySelector('.active-item').classList.remove('.moved-right');
+        paginationCircles[1].setAttribute('src', './assets/img/pagination-active.svg');
+        paginationCircles[0].setAttribute('src', './assets/img/pagination.svg');
       } else if (document.querySelector('.active-item').classList.contains('.moved-left')) {
         slider.classList.remove('to-left');
         document.querySelector('.active-item').classList.remove('.moved-left');
+        paginationCircles[1].setAttribute('src', './assets/img/pagination-active.svg');
+        paginationCircles[2].setAttribute('src', './assets/img/pagination.svg');
       }
     }
   }
 })
+
+// if (window.innerWidth < 391)
 
 // function toLeft() {
 //   // document.querySelector('.left-item'). classList.remove('left-item');

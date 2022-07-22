@@ -408,6 +408,10 @@ button:active {
   list-style: none;
 }
 
+.pagination-item-active {
+  opacity: 1;
+}
+
 .arrow-button {
   display: flex;
   align-items: center;
