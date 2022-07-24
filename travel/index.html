@@ -33,7 +33,7 @@
               <li class="nav-item">
                 <a class="nav-link" href="#stories">Travel Stories</a>
               </li>
-              <li class="nav-item visually-hidden">
+              <li class="nav-item visually-hidden mobile-login">
                 <a class="nav-link" href="#account">Account</a>
               </li>
               <li class="nav-item visually-hidden">
@@ -86,11 +86,11 @@
           <h2 class="section-title">Popular destinations</h2>
           <div class="slider">
             <div class="slider-arrows visually-hidden">
-              <img class="slider-arrow" src="./assets/img/slider-arrow-left.svg" alt="left slider arrow" width="30" height="30">
-              <img class="slider-arrow" src="./assets/img/slider-arrow-right.svg" alt="left slider right" width="30" height="30">
+              <img class="slider-arrow left-arrow" src="./assets/img/slider-arrow-left.svg" alt="left slider arrow" width="30" height="30">
+              <img class="slider-arrow right-arrow" src="./assets/img/slider-arrow-right.svg" alt="left slider arrow" width="30" height="30">
             </div>
             <ul class="slider-list">
-              <li class="slider-item">
+              <li class="slider-item left-item">
                 <figure class="slider-item-figure">
                   <img class="slider-image desktop" 
                         src="./assets/img/Spain.jpg"
@@ -112,7 +112,7 @@
                   <figcaption class="slider-description">Spain</figcaption> 
                 </figure>
               </li>
-              <li class="slider-item">
+              <li class="slider-item active-item rightend">
                 <figure class="slider-item-figure">
                   <img class="slider-image desktop" 
                         src="./assets/img/Japan.jpg" 
@@ -134,7 +134,7 @@
                   <figcaption class="slider-description">Japan</figcaption>
                 </figure>
               </li>
-              <li class="slider-item">
+              <li class="slider-item right-item">
                 <figure class="slider-item-figure">
                   <img class="slider-image desktop" 
                         src="./assets/img/USA.jpg" 
@@ -159,16 +159,16 @@
             </ul>
             <ul class="pagination-list">
               <li class="pagination-item">
-                <img class="desktop" src="./assets/img/pagination.svg" alt="pagination" width="20" height="20">
-                <img class="visually-hidden" src="./assets/img/pagination-active.svg" alt="pagination" width="8" height="8">
+                <img class="desktop pagination-circle" src="./assets/img/pagination.svg" alt="pagination" width="20" height="20">
+                <img class="visually-hidden pagination-circle-mobile" src="./assets/img/pagination-active.svg" alt="pagination" width="8" height="8">
               </li>
               <li class="pagination-item">
-                <img class="desktop" src="./assets/img/pagination-active.svg" alt="pagination" width="20" height="20">
-                <img class="visually-hidden" src="./assets/img/pagination.svg" alt="pagination" width="8" height="8">
+                <img class="desktop pagination-circle" src="./assets/img/pagination-active.svg" alt="pagination" width="20" height="20">
+                <img class="visually-hidden pagination-circle-mobile" src="./assets/img/pagination.svg" alt="pagination" width="8" height="8">
               </li>
               <li class="pagination-item">
-                <img class="desktop" src="./assets/img/pagination.svg" alt="pagination" width="20" height="20">
-                <img class="visually-hidden" src="./assets/img/pagination.svg" alt="pagination" width="8" height="8">
+                <img class="desktop pagination-circle" src="./assets/img/pagination.svg" alt="pagination" width="20" height="20">
+                <img class="visually-hidden pagination-circle-mobile" src="./assets/img/pagination.svg" alt="pagination" width="8" height="8">
               </li>
             </ul>
           </div>
@@ -301,7 +301,49 @@
         </div>
       </div>
     </footer>
-    <script src="index.js"></script>
+
+    <div class="login-pop-up-wrapper pop-up-wrapper-hidden"></div>
+    <div class="login-pop-up">
+      <h3 class="pop-up-title">Log in to your account</h3>
+        <div class="socials-login">
+          <button class="sign-in-button socials-sign-in sign-in-fb">
+          <img class="sign-in-logo" src="./assets/img/sign-in-fb-logo.svg" alt="facebook logo">
+          Sign In with Facebook</button>
+        <button class="sign-in-button socials-sign-in sign-in-google">
+          <img class="sign-in-logo" src="./assets/img/sign-in-google-logo.svg" alt="Google logo">
+          Sign In with Google</button>
+        </div>
+        <div class="divider divider-socials">
+          <span class="divider-line-left"></span>
+          <span class="divider-or">Or</span>
+          <span class="divider-line-right"></span>
+          </div>
+        <form class="form-sign-in" action="">
+          <div class="input-label">
+            <label class="pop-up-label" for="email">E-mail</label>
+            <input class="input-field" id="email" type="email">
+          </div>
+          <div class="input-label">
+            <label class="pop-up-label"for="psw">Password</label>
+            <input class="input-field" id="psw" type="password">
+          </div>
+          <button class="sign-in-button sign-in-directly">Sign In</button>
+        </form>
+        <div class="forgot-psw-wrapper">
+          <a class="forgot-psw-link" href="#">Forgot Your Password?</a>
+        </div>
+        <div class="divider">
+          <span class="divider-line"></span>
+        </div>
+        <div class="register">
+          <p class="no-account">Don’t have an account?</p>
+          <a class="register-link" href="#">Register</a>
+        </div>
+    </div>
+    
+    <script src="burger-menu.js"></script>
+    <script src="pop-up.js"></script>
+    <script src="slider.js"></script>
   </div>
 </body>
 </html>
