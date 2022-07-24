@@ -19,13 +19,21 @@ navList.onclick = function () {
   wrapper.classList.remove('wrapper-overlay');
 }
 
-// document.addEventListener('click', (event) => {
-//   if (event.target != burgerMenu) {
-//     navigation.classList.remove('navigation-active');
-//     wrapper.classList.remove('wrapper-overlay');
-//   }
-  
-// })
+const closeMobileMenu = () => {
+  if (window.innerWidth <= 391) {
+  document.addEventListener('click', (event) => {
+      if (event.target != burgerMenu) {
+        navigation.classList.remove('navigation-active');
+        wrapper.classList.remove('wrapper-overlay');
+        }
+      });
+}
+}
+
+closeMobileMenu();
+
+
+
 
 
 
