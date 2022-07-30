@@ -65,7 +65,6 @@ getTimeOfDay();
 
 //Save name to local storage
 const name = document.querySelector('.name');
-console.log(name);
 
 function setLocalStorage() {
   localStorage.setItem('name', name.value);
@@ -80,3 +79,58 @@ function getLocalStorage() {
 }
 
 window.addEventListener('load', getLocalStorage);
+
+//Background slider
+const body = document.querySelector('body');
+
+function getRandomNum(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min; //Максимум не включается, минимум включается
+}
+
+let randomNum = (getRandomNum(1, 21));
+
+function setBg () {
+  const timeOfDay = getTimeOfDay();
+  const bgNum = randomNum.toString().padStart(2, "0");
+
+  const bgImage = new Image();
+  bgImage.src = `https://raw.githubusercontent.com/9fogel/stage1-tasks/assets/images/${timeOfDay}/${bgNum}.jpg`;
+  // const bgLink = `https://raw.githubusercontent.com/9fogel/stage1-tasks/assets/images/${timeOfDay}/${bgNum}.jpg`;
+  bgImage.onload = () => {
+    // body.style.backgroundImage = `url(${bgLink})`;
+    body.style.backgroundImage = `url(${bgImage.src})`;
+  }
+  
+}
+
+setBg ();
+
+const previousSlide = document.querySelector('.slide-prev');
+const nextSlide = document.querySelector('.slide-next');
+
+function getSlideNext() {
+  if (randomNum < 20) {
+    randomNum++;
+    setBg();
+  } else if (randomNum = 20) {
+    randomNum = 1;
+    setBg();
+  }
+  
+}
+
+function getSlidePrev() {
+  if (randomNum > 1) {
+    randomNum--;
+    setBg();
+  } else if (randomNum = 1) {
+    randomNum = 20;
+    setBg();
+  }
+}
+
+nextSlide.addEventListener('click', getSlideNext);
+previousSlide.addEventListener('click', getSlidePrev);
+console.log(randomNum);
