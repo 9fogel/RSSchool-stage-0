@@ -22,9 +22,6 @@ setTimeout(function showTime(){
   setTimeout(showTime, 1000);
 }, 1000);
 
-
-// showTime();
-
 function showDate() {
   const fullDate = new Date();
   const options = {month: 'long', day: 'numeric',};
@@ -61,7 +58,7 @@ function showGreeting() {
 }
 
 getTimeOfDay();
-// showGreeting();
+
 
 //Save name to local storage
 const name = document.querySelector('.name');
@@ -80,13 +77,14 @@ function getLocalStorage() {
 
 window.addEventListener('load', getLocalStorage);
 
+
 //Background slider
 const body = document.querySelector('body');
 
 function getRandomNum(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min; //Максимум не включается, минимум включается
+  return Math.floor(Math.random() * (max - min)) + min;
 }
 
 let randomNum = (getRandomNum(1, 21));
@@ -97,9 +95,7 @@ function setBg () {
 
   const bgImage = new Image();
   bgImage.src = `https://raw.githubusercontent.com/9fogel/stage1-tasks/assets/images/${timeOfDay}/${bgNum}.jpg`;
-  // const bgLink = `https://raw.githubusercontent.com/9fogel/stage1-tasks/assets/images/${timeOfDay}/${bgNum}.jpg`;
   bgImage.onload = () => {
-    // body.style.backgroundImage = `url(${bgLink})`;
     body.style.backgroundImage = `url(${bgImage.src})`;
   }
   
@@ -133,4 +129,52 @@ function getSlidePrev() {
 
 nextSlide.addEventListener('click', getSlideNext);
 previousSlide.addEventListener('click', getSlidePrev);
-console.log(randomNum);
+
+
+//Weather widget
+
+const weatherIcon = document.querySelector('.weather-icon');
+const temperature = document.querySelector('.temperature');
+const weatherDesc = document.querySelector('.weather-description');
+const userCity = document.querySelector('.city');
+const wind = document.querySelector('.wind');
+const humidity = document.querySelector('.humidity');
+
+async function getWeather() {
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${userCity.value}&lang=en&appid=2798d3ecd30e6ab70551a54dcef7db53&units=metric`;
+  const res = await fetch(url);
+  const data = await res.json();
+
+  weatherIcon.className = 'weather-icon owf';
+  weatherIcon.classList.add(`owf-${data.weather[0].id}`);
+  temperature.textContent = `${Math.round(data.main.temp)}°C`;
+  weatherDesc.textContent = data.weather[0].description;
+  wind.textContent = `Wind speed: ${Math.round(data.wind.speed)} m/s`;
+  humidity.textContent = `Humidity: ${data.main.humidity}%`;
+
+  // if (data.weather === undefined) {
+  //   alert('Error! city not found for '${userCity}'!');
+  // }
+}
+
+userCity.addEventListener('change', getWeather);
+
+function setLocalStorageCity() {
+  localStorage.setItem('userCity', userCity.value);
+}
+
+window.addEventListener('beforeunload', setLocalStorageCity);
+
+function getLocalStorageCity() {
+  if (localStorage.getItem('userCity')) {
+    userCity.value = localStorage.getItem('userCity');
+    getWeather();
+  } else if (localStorage.getItem('userCity') === '') {
+    userCity.value = 'Minsk';
+    getWeather();
+  }
+}
+
+window.addEventListener('load', getLocalStorageCity);
+
+// выводится уведомление об ошибке при вводе некорректных значений
