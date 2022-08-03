@@ -185,3 +185,23 @@ function getLocalStorageCity() {
 }
 
 window.addEventListener('load', getLocalStorageCity);
+
+//Quotes widget
+const quoteText = document.querySelector('.quote');
+const quoteAuthor = document.querySelector('.author');
+const changeQuoteBtn = document.querySelector('.change-quote');
+
+async function getQuotes() {
+  const quotes = './assets/quotesEn.json';
+  const res = await fetch(quotes);
+  const data = await res.json();
+  const quoteNum = getRandomNum(0, 5);
+
+  quoteText.textContent = data[quoteNum].text;
+  quoteAuthor.textContent = data[quoteNum].author;
+  console.log(data);
+}
+getQuotes();
+
+window.addEventListener('load', getQuotes);
+changeQuoteBtn.addEventListener('click', getQuotes);
