@@ -11,6 +11,8 @@ const dayOftheWeek = fullDate.getDay();
 
 const daysOftheWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
+showDate();
+time.textContent = curTime;
 
 setTimeout(function showTime(){
   const fullDate = new Date();
@@ -58,6 +60,7 @@ function showGreeting() {
 }
 
 getTimeOfDay();
+window.addEventListener('load', showGreeting);
 
 
 //Save name to local storage
