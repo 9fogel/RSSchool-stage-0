@@ -132,29 +132,38 @@ previousSlide.addEventListener('click', getSlidePrev);
 
 
 //Weather widget
-
 const weatherIcon = document.querySelector('.weather-icon');
 const temperature = document.querySelector('.temperature');
 const weatherDesc = document.querySelector('.weather-description');
 const userCity = document.querySelector('.city');
 const wind = document.querySelector('.wind');
 const humidity = document.querySelector('.humidity');
+const weatherError = document.querySelector('.weather-error');
 
 async function getWeather() {
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${userCity.value}&lang=en&appid=2798d3ecd30e6ab70551a54dcef7db53&units=metric`;
   const res = await fetch(url);
-  const data = await res.json();
 
-  weatherIcon.className = 'weather-icon owf';
-  weatherIcon.classList.add(`owf-${data.weather[0].id}`);
-  temperature.textContent = `${Math.round(data.main.temp)}°C`;
-  weatherDesc.textContent = data.weather[0].description;
-  wind.textContent = `Wind speed: ${Math.round(data.wind.speed)} m/s`;
-  humidity.textContent = `Humidity: ${data.main.humidity}%`;
+  if (res.ok) {
+    const data = await res.json();
 
-  // if (data.weather === undefined) {
-  //   alert('Error! city not found for '${userCity}'!');
-  // }
+    weatherIcon.className = 'weather-icon owf';
+    weatherIcon.classList.add(`owf-${data.weather[0].id}`);
+    temperature.textContent = `${Math.round(data.main.temp)}°C`;
+    weatherDesc.textContent = data.weather[0].description;
+    wind.textContent = `Wind speed: ${Math.round(data.wind.speed)} m/s`;
+    humidity.textContent = `Humidity: ${data.main.humidity}%`;
+    weatherError.textContent = '';
+    } else {
+      const data = await res.json();
+      weatherError.textContent = `Error! city not found for '${userCity.value}'`;
+      // alert('Error HTTP: ' + res.status);
+      temperature.textContent = '';
+      weatherDesc.textContent = '';
+      wind.textContent = '';
+      humidity.textContent = '';
+      weatherIcon.className = 'weather-icon owf';
+      }
 }
 
 userCity.addEventListener('change', getWeather);
@@ -176,5 +185,3 @@ function getLocalStorageCity() {
 }
 
 window.addEventListener('load', getLocalStorageCity);
-
-// выводится уведомление об ошибке при вводе некорректных значений

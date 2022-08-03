@@ -142,6 +142,14 @@ body {
   column-gap: 12px;
 }
 
+/* .description-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  column-gap: 12px;
+} */
+
 .weather-icon {
   font-size: 44px;
 }
