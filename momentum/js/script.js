@@ -202,9 +202,83 @@ async function getQuotes() {
 
   quoteText.textContent = data[quoteNum].text;
   quoteAuthor.textContent = data[quoteNum].author;
-  console.log(data);
 }
 getQuotes();
 
 window.addEventListener('load', getQuotes);
 changeQuoteBtn.addEventListener('click', getQuotes);
+
+//Audioplayer
+const audio = new Audio();
+const playBtn = document.querySelector('.play');
+const nextBtn = document.querySelector('.play-next');
+const prevBtn = document.querySelector('.play-prev');
+
+let isPlay = false;
+let playNum = 0;
+
+function playAudio() {
+  audio.src = playList[playNum].src;
+  audio.currentTime = 1;
+  audio.play();
+}
+
+playBtn.onclick = function () {
+  if(!isPlay) {
+    playAudio();
+    playBtn.classList.add('pause');
+    isPlay = true;
+    console.log(`Play - ${isPlay}`);
+  } else if (isPlay) {
+    audio.pause();
+    playBtn.classList.remove('pause');
+    isPlay = false;
+    console.log(`Pause - ${isPlay}`);
+  }
+  
+}
+
+function playNext() {
+  if (playNum < playList.length - 1) {
+    playNum++;
+  } else {
+    playNum = 0;
+  }
+  playAudio();
+}
+
+function playPrev() {
+  if (playNum !== 0) {
+    playNum--;
+  } else {
+    playNum = playList.length - 1;
+  }
+  playAudio();
+}
+
+import playList from './playList.js';
+
+nextBtn.onclick = function () {
+  if(!isPlay) {
+    playNext();
+    isPlay = true;
+    playBtn.classList.add('pause');
+  } else if (isPlay) {
+    playNext();
+    isPlay = true;
+  }
+}
+
+prevBtn.onclick = function () {
+  if(!isPlay) {
+    playPrev();
+    isPlay = true;
+    playBtn.classList.add('pause');
+  } else if (isPlay) {
+    playPrev();
+    isPlay = true;
+  }
+}
+
+// nextBtn.addEventListener('click', playNext);
+// prevBtn.addEventListener('click', playPrev);
