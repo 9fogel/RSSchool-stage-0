@@ -75,6 +75,8 @@ window.addEventListener('beforeunload', setLocalStorage);
 function getLocalStorage() {
   if(localStorage.getItem('name')) {
     name.value = localStorage.getItem('name');
+  } else {
+    name.setAttribute('placeholder', '[Enter name]');
   }
 }
 
@@ -282,3 +284,9 @@ prevBtn.onclick = function () {
 
 // nextBtn.addEventListener('click', playNext);
 // prevBtn.addEventListener('click', playPrev);
+
+//добавить плейлист
+// трек, который в данный момент проигрывается, в блоке Play-list выделяется стилем +3
+// после окончания проигрывания первого трека, автоматически запускается проигрывание следующего. Треки проигрываются по кругу: после последнего снова проигрывается первый. +3
+// Для удобства проверки треки возьмите небольшой продолжительности. Обрезать треки можно здесь: https://mp3cut.net/ru/
+// плейлист генерируется средствами JavaScript (в ходе кросс-чека этот пункт не проверяется)
