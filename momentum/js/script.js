@@ -219,10 +219,26 @@ const prevBtn = document.querySelector('.play-prev');
 let isPlay = false;
 let playNum = 0;
 
+//Create playlist
+import playList from './playList.js';
+
+const playListContainer = document.querySelector('.play-list');
+
+playList.forEach((elem, index) => {
+  const li = document.createElement('li');
+  li.classList.add('play-item');
+  li.textContent = playList[index].title;
+
+  playListContainer.append(li);
+});
+
+const playItems = document.querySelectorAll('.play-item');
+
 function playAudio() {
   audio.src = playList[playNum].src;
   audio.currentTime = 1;
   audio.play();
+  playItems[playNum].classList.add('item-active');
 }
 
 playBtn.onclick = function () {
@@ -230,20 +246,22 @@ playBtn.onclick = function () {
     playAudio();
     playBtn.classList.add('pause');
     isPlay = true;
-    console.log(`Play - ${isPlay}`);
+    // console.log(`Play - ${isPlay}`);
   } else if (isPlay) {
     audio.pause();
     playBtn.classList.remove('pause');
     isPlay = false;
-    console.log(`Pause - ${isPlay}`);
+    // console.log(`Pause - ${isPlay}`);
   }
-  
 }
 
+//Play next/previous
 function playNext() {
   if (playNum < playList.length - 1) {
+    playItems[playNum].classList.remove('item-active');
     playNum++;
   } else {
+    playItems[playNum].classList.remove('item-active');
     playNum = 0;
   }
   playAudio();
@@ -251,14 +269,14 @@ function playNext() {
 
 function playPrev() {
   if (playNum !== 0) {
+    playItems[playNum].classList.remove('item-active');
     playNum--;
   } else {
+    playItems[playNum].classList.remove('item-active');
     playNum = playList.length - 1;
   }
   playAudio();
 }
-
-import playList from './playList.js';
 
 nextBtn.onclick = function () {
   if(!isPlay) {
@@ -282,11 +300,4 @@ prevBtn.onclick = function () {
   }
 }
 
-// nextBtn.addEventListener('click', playNext);
-// prevBtn.addEventListener('click', playPrev);
-
-//добавить плейлист
-// трек, который в данный момент проигрывается, в блоке Play-list выделяется стилем +3
-// после окончания проигрывания первого трека, автоматически запускается проигрывание следующего. Треки проигрываются по кругу: после последнего снова проигрывается первый. +3
-// Для удобства проверки треки возьмите небольшой продолжительности. Обрезать треки можно здесь: https://mp3cut.net/ru/
-// плейлист генерируется средствами JavaScript (в ходе кросс-чека этот пункт не проверяется)
+audio.addEventListener('ended', playNext);
