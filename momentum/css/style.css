@@ -219,6 +219,7 @@ a {
   min-height: 28px;
   font-size: 24px;
   margin-bottom: 20px;
+  transition: ease-in-out .3s;
 }
 
 .greeting-container {
@@ -235,6 +236,7 @@ a {
   flex: 1;  
   padding: 10px;
   text-align: right;
+  transition: ease-in-out .3s;
 }
 
 .name {
@@ -247,6 +249,7 @@ a {
   background-color: transparent;
   border: 0;
   outline: 0;
+  transition: ease-in-out .3s;
 }
 
 .name::placeholder {
@@ -255,6 +258,7 @@ a {
 }
 
 .footer {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -299,6 +303,69 @@ a {
   transform: scale(1.03);
   transition: ease-in-out .3s;
   opacity: 1;
+}
+
+.settings-menu {
+  position: absolute;
+  bottom: 64px;
+  left: 20px;
+  padding: 16px;
+  width: 200px;
+  /* height: 100px; */
+  background-color: #ffffff;
+  color: #000000;
+  border-radius: 4px;
+  visibility: hidden;
+}
+
+.settings-menu-visible {
+  visibility: visible;
+  transition: ease-in-out .3s;
+}
+
+.settings-title {
+  font-size: 16px;
+}
+
+.language-choise {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 16px;
+  padding-top: 12px;
+  font-size: 14px;
+}
+
+.custom-radio {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.custom-radio+label {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+}
+
+.custom-radio+label::before {
+  content: '';
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border: 1px solid #adb5bd;
+  border-radius: 50%;
+  margin-right: 0.5em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50% 50%;
+}
+
+.custom-radio:checked+label::before {
+  border-color: #4cbf3f;
+  background-color: #4cbf3f;
 }
 
 .footer-icons {

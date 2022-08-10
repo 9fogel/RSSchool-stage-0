@@ -1,15 +1,26 @@
+const settingsState = {
+  language: 'en',
+  photoSource: 'github',
+  // blocks: ['time', 'date','greeting', 'quote', 'weather', 'audio', 'todolist']
+}
+
+function setLocalStorageSettings() {
+  localStorage.setItem('settings', settingsState.language);
+}
+
 //Clock & calendar
 const time = document.querySelector('.time');
 const date = document.querySelector('.date');
 
 const fullDate = new Date();
-const curTime = fullDate.toLocaleTimeString('en-EN', {hour: 'numeric', hour12: false, minute: 'numeric', second: 'numeric'});
+const curTime = fullDate.toLocaleTimeString(`${settingsState.language}`, {hour: 'numeric', hour12: false, minute: 'numeric', second: 'numeric'});
 
 const options = {month: 'long', day: 'numeric',};
-const curDate = fullDate.toLocaleDateString('en-EN', options);
+const curDate = fullDate.toLocaleDateString(`${settingsState.language}`, options);
 const dayOftheWeek = fullDate.getDay();
 
 const daysOftheWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
 
 showDate();
 time.textContent = curTime;
@@ -27,12 +38,17 @@ setTimeout(function showTime(){
 function showDate() {
   const fullDate = new Date();
   const options = {month: 'long', day: 'numeric',};
-  const curDate = fullDate.toLocaleDateString('en-EN', options);
+  // const curDate = fullDate.toLocaleDateString('en-EN', options);
+  const curDate = fullDate.toLocaleDateString(`${settingsState.language}`, options);
   const dayOftheWeek = fullDate.getDay();
 
-  const daysOftheWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
-  date.textContent = daysOftheWeek[dayOftheWeek] + ', ' + curDate;
+  const daysOftheWeekEn = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const daysOftheWeekRu = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
+  if (settingsState.language === 'en') {
+    date.textContent = daysOftheWeekEn[dayOftheWeek] + ', ' + curDate;
+  } else if (settingsState.language === 'ru') {
+    date.textContent = daysOftheWeekRu[dayOftheWeek] + ', ' + curDate;
+  }
 }
 
 
@@ -53,10 +69,28 @@ function getTimeOfDay() {
   }
 }
 
-const greetingText = `Good ${timeOfDay},`;
+const greetingTextEn = `Good ${timeOfDay},`;
+const greetingTextRu = getTimeOfDayRu();
+
+function getTimeOfDayRu() {
+  if (timeOfDay === 'morning') {
+    return 'Доброе утро, ';
+  } else if (timeOfDay === 'afternoon') {
+    return 'Добрый день, ';
+  } else if (timeOfDay === 'evening') {
+    return 'Добрый вечер, ';
+  }  else if (timeOfDay === 'night') {
+    return 'Доброй ночи, '
+  }
+}
 
 function showGreeting() {
-  greeting.textContent = greetingText;
+  if (settingsState.language === 'en') {
+    greeting.textContent = greetingTextEn;
+  } else if (settingsState.language === 'ru') {
+    greeting.textContent = greetingTextRu;
+  }
+  
 }
 
 getTimeOfDay();
@@ -76,11 +110,25 @@ function getLocalStorage() {
   if(localStorage.getItem('name')) {
     name.value = localStorage.getItem('name');
   } else {
-    name.setAttribute('placeholder', '[Enter name]');
+    if (settingsState.language === 'en') {
+      name.setAttribute('placeholder', '[Enter name]');
+    } else if (settingsState.language === 'ru') {
+      name.setAttribute('placeholder', '[Введите имя]');
+    }
   }
 }
+window.onload = function () {
+  getLocalStorage();
+  getLocalStorageCity();
+  getLocalStorageSettings();
+  console.log('it doesnt work?' + settingsState.language)
+  if (settingsState.language === 'ru') {
+    name.setAttribute('placeholder', '[Введите имя]');
+    // userCity.value = 'Минск';
+  }
 
-window.addEventListener('load', getLocalStorage);
+}
+// window.addEventListener('load', getLocalStorage);
 
 
 //Background slider
@@ -146,22 +194,31 @@ const humidity = document.querySelector('.humidity');
 const weatherError = document.querySelector('.weather-error');
 
 async function getWeather() {
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${userCity.value}&lang=en&appid=2798d3ecd30e6ab70551a54dcef7db53&units=metric`;
+  // const url = `https://api.openweathermap.org/data/2.5/weather?q=${userCity.value}&lang=en&appid=2798d3ecd30e6ab70551a54dcef7db53&units=metric`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${userCity.value}&lang=${settingsState.language}&appid=2798d3ecd30e6ab70551a54dcef7db53&units=metric`;
   const res = await fetch(url);
 
   if (res.ok) {
     const data = await res.json();
-
     weatherIcon.className = 'weather-icon owf';
     weatherIcon.classList.add(`owf-${data.weather[0].id}`);
     temperature.textContent = `${Math.round(data.main.temp)}°C`;
     weatherDesc.textContent = data.weather[0].description;
-    wind.textContent = `Wind speed: ${Math.round(data.wind.speed)} m/s`;
-    humidity.textContent = `Humidity: ${data.main.humidity}%`;
     weatherError.textContent = '';
+    if (settingsState.language === 'en') {
+      wind.textContent = `Wind speed: ${Math.round(data.wind.speed)} m/s`;
+      humidity.textContent = `Humidity: ${data.main.humidity}%`;
+      } else if (settingsState.language === 'ru') {
+      wind.textContent = `Скорость ветра: ${Math.round(data.wind.speed)} м/с`;
+      humidity.textContent = `Влажность: ${data.main.humidity}%`;
+      }
     } else {
       const data = await res.json();
-      weatherError.textContent = `Error! city not found for '${userCity.value}'`;
+      if (settingsState.language === 'en') {
+        weatherError.textContent = `Error! city not found for '${userCity.value}'`;
+      } else if (settingsState.language === 'ru') {
+        weatherError.textContent = `Ошибка! город '${userCity.value}' не найден`;
+      }
       // alert('Error HTTP: ' + res.status);
       temperature.textContent = '';
       weatherDesc.textContent = '';
@@ -184,7 +241,11 @@ function getLocalStorageCity() {
     userCity.value = localStorage.getItem('userCity');
     getWeather();
   } else if (localStorage.getItem('userCity') === '') {
-    userCity.value = 'Minsk';
+    if (settingsState.language === 'en') {
+      userCity.value = 'Minsk';
+    } else if (settingsState.language === 'ru') {
+      userCity.value = 'Минск';
+    }
     getWeather();
   }
 }
@@ -196,14 +257,28 @@ const quoteText = document.querySelector('.quote');
 const quoteAuthor = document.querySelector('.author');
 const changeQuoteBtn = document.querySelector('.change-quote');
 
+let quotes = '';
 async function getQuotes() {
-  const quotes = './assets/quotesEn.json';
+  
+  if (settingsState.language === 'en') {
+    quotes = './assets/quotesEn.json';
+  } else if (settingsState.language === 'ru') {
+    quotes = './assets/quotesRu.json';
+  }
   const res = await fetch(quotes);
   const data = await res.json();
   const quoteNum = getRandomNum(0, 5);
+  
+  if (settingsState.language === 'en') {
+    quoteText.textContent = data[quoteNum].text;
+    quoteAuthor.textContent = data[quoteNum].author;
+  } else if (settingsState.language === 'ru') {
+    quoteText.textContent = data[quoteNum].text;
+    quoteAuthor.textContent = data[quoteNum].author;
+  }
 
-  quoteText.textContent = data[quoteNum].text;
-  quoteAuthor.textContent = data[quoteNum].author;
+  // quoteText.textContent = data[quoteNum].text;
+  // quoteAuthor.textContent = data[quoteNum].author;
 }
 getQuotes();
 
@@ -301,3 +376,113 @@ prevBtn.onclick = function () {
 }
 
 audio.addEventListener('ended', playNext);
+
+//Settings popup
+const settings = document.querySelector('.settings');
+const settingsMenu = document.querySelector('.settings-menu');
+
+function showSettings () {
+  settingsMenu.classList.toggle('settings-menu-visible');
+  console.log('settings');
+}
+
+settings.addEventListener('click', showSettings);
+
+// const settingsState = {
+//   language: 'en',
+//   // photoSource: 'github',
+//   // blocks: ['time', 'date','greeting', 'quote', 'weather', 'audio', 'todolist']
+// }
+
+const languages = document.querySelectorAll('.lang');
+const radioBtns = document.querySelectorAll('.custom-radio');
+const radioEn = document.querySelector('.english-lang');
+const radioRu = document.querySelector('.russian-lang');
+
+languages.forEach((lang, index) => {
+  lang.onclick = function () {
+    radioBtns.forEach((radio) => {
+      if (radio.hasAttribute('checked')) {
+        radio.removeAttribute('checked');
+        radio.classList.remove('checked');
+      }
+    });
+    radioBtns[index].setAttribute('checked', 'checked');
+    radioBtns[index].classList.add('checked');
+    settingsState.language = radioBtns[index].value;
+    console.log(settingsState.language);
+    setLocalStorageSettings();
+    getLocalStorageSettings();
+    getQuotes();
+    if (settingsState.language === 'ru') {
+      getLocalStorageCity();
+      getLocalStorage();
+      translateToRu();
+    }
+    if (settingsState.language === 'en') {
+      getLocalStorageCity();
+      getLocalStorage();
+      translateToEn();
+    }
+  }
+});
+
+console.log(settingsState.language);
+
+window.addEventListener('beforeunload', setLocalStorageSettings);
+
+function getLocalStorageSettings() {
+  if(localStorage.getItem('settings')) {
+    settingsState.language = localStorage.getItem('settings');
+  }
+  if(settingsState.language === 'ru') {
+      radioRu.classList.add('checked');
+      radioEn.classList.remove('checked');
+      let checkedRadio = document.querySelector('.checked');
+      checkedRadio.setAttribute('checked', 'checked');
+      radioEn.removeAttribute('checked');
+    }
+}
+
+window.addEventListener('load', getLocalStorageSettings);
+
+
+function translateToRu() {
+    getWeather();
+    getLocalStorageCity();
+    if (localStorage.getItem('userCity') === '') {
+      userCity.value = 'Минск';
+    }
+    weatherDesc.textContent = data.weather[0].description;
+    getQuotes();
+}
+
+function translateToEn() {
+  getWeather();
+  getLocalStorageCity();
+  if (localStorage.getItem('userCity') === '') {
+    userCity.value = 'Minsk';
+  }
+  weatherDesc.textContent = data.weather[0].description;
+  getQuotes();
+}
+
+//не переводится цитата, город по умолчанию и плейсхолдер;
+
+
+// if(settingsState.language === 'en') {
+//   name.setAttribute('placeholder', '[Enter name]');
+//   userCity.value = 'Minsk';
+//   quotes = './assets/quotesEn.json';
+// } else if (settingsState.language === 'ru') {
+//   name.setAttribute('placeholder', '[Введите имя]');
+//   userCity.value = 'Минск';
+//   quotes = './assets/quotesRu.json';
+// };
+
+// const greetingTranslation = {
+//   en: greetingTextEn,
+//   ru: greetingTextRu,
+// }
+
+// console.log(greetingTranslation.ru);
