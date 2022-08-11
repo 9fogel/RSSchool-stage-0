@@ -121,10 +121,8 @@ window.onload = function () {
   getLocalStorage();
   getLocalStorageCity();
   getLocalStorageSettings();
-  console.log('it doesnt work?' + settingsState.language)
   if (settingsState.language === 'ru') {
     name.setAttribute('placeholder', '[Введите имя]');
-    // userCity.value = 'Минск';
   }
 
 }
@@ -240,17 +238,29 @@ function getLocalStorageCity() {
   if (localStorage.getItem('userCity')) {
     userCity.value = localStorage.getItem('userCity');
     getWeather();
-  } else if (localStorage.getItem('userCity') === '') {
-    if (settingsState.language === 'en') {
-      userCity.value = 'Minsk';
-    } else if (settingsState.language === 'ru') {
-      userCity.value = 'Минск';
-    }
-    getWeather();
-  }
+  } 
+  // else if (localStorage.getItem('userCity') === '') {
+  //   if (settingsState.language === 'en') {
+  //     userCity.value = 'Minsk';
+  //   } else if (settingsState.language === 'ru') {
+  //     userCity.value = 'Минск';
+  //   }
+  //   getWeather();
+  // }
 }
 
-window.addEventListener('load', getLocalStorageCity);
+// window.addEventListener('load', getLocalStorageCity);
+window.addEventListener('load', () => {
+  getLocalStorageCity();
+  if (localStorage.getItem('userCity') === '') {
+      if (settingsState.language === 'en') {
+        userCity.value = 'Minsk';
+      } else if (settingsState.language === 'ru') {
+        userCity.value = 'Минск';
+      }
+      getWeather();
+  }
+});
 
 //Quotes widget
 const quoteText = document.querySelector('.quote');
@@ -276,9 +286,6 @@ async function getQuotes() {
     quoteText.textContent = data[quoteNum].text;
     quoteAuthor.textContent = data[quoteNum].author;
   }
-
-  // quoteText.textContent = data[quoteNum].text;
-  // quoteAuthor.textContent = data[quoteNum].author;
 }
 getQuotes();
 
@@ -321,12 +328,10 @@ playBtn.onclick = function () {
     playAudio();
     playBtn.classList.add('pause');
     isPlay = true;
-    // console.log(`Play - ${isPlay}`);
   } else if (isPlay) {
     audio.pause();
     playBtn.classList.remove('pause');
     isPlay = false;
-    // console.log(`Pause - ${isPlay}`);
   }
 }
 
@@ -388,16 +393,13 @@ function showSettings () {
 
 settings.addEventListener('click', showSettings);
 
-// const settingsState = {
-//   language: 'en',
-//   // photoSource: 'github',
-//   // blocks: ['time', 'date','greeting', 'quote', 'weather', 'audio', 'todolist']
-// }
-
+//Translation
 const languages = document.querySelectorAll('.lang');
 const radioBtns = document.querySelectorAll('.custom-radio');
 const radioEn = document.querySelector('.english-lang');
 const radioRu = document.querySelector('.russian-lang');
+const langTitle = document.querySelector('.lang-title');
+const langLabels = document.querySelectorAll('label');
 
 languages.forEach((lang, index) => {
   lang.onclick = function () {
@@ -427,8 +429,6 @@ languages.forEach((lang, index) => {
   }
 });
 
-console.log(settingsState.language);
-
 window.addEventListener('beforeunload', setLocalStorageSettings);
 
 function getLocalStorageSettings() {
@@ -441,33 +441,39 @@ function getLocalStorageSettings() {
       let checkedRadio = document.querySelector('.checked');
       checkedRadio.setAttribute('checked', 'checked');
       radioEn.removeAttribute('checked');
+      langTitle.textContent = 'Выберите язык';
+      langLabels[0].textContent = 'Английский';
+      langLabels[1].textContent = 'Русский';
     }
 }
 
 window.addEventListener('load', getLocalStorageSettings);
 
-
 function translateToRu() {
+    langTitle.textContent = 'Выберите язык';
+    langLabels[0].textContent = 'Английский';
+    langLabels[1].textContent = 'Русский';
     getWeather();
     getLocalStorageCity();
     if (localStorage.getItem('userCity') === '') {
       userCity.value = 'Минск';
     }
-    weatherDesc.textContent = data.weather[0].description;
     getQuotes();
 }
 
 function translateToEn() {
+  langTitle.textContent = 'Language';
+  langLabels[0].textContent = 'English';
+  langLabels[1].textContent = 'Russian';
   getWeather();
   getLocalStorageCity();
   if (localStorage.getItem('userCity') === '') {
     userCity.value = 'Minsk';
   }
-  weatherDesc.textContent = data.weather[0].description;
   getQuotes();
 }
 
-//не переводится цитата, город по умолчанию и плейсхолдер;
+//не переводится цитата
 
 
 // if(settingsState.language === 'en') {
