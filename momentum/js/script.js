@@ -386,9 +386,8 @@ audio.addEventListener('ended', playNext);
 const settings = document.querySelector('.settings');
 const settingsMenu = document.querySelector('.settings-menu');
 
-function showSettings () {
+function showSettings() {
   settingsMenu.classList.toggle('settings-menu-visible');
-  console.log('settings');
 }
 
 settings.addEventListener('click', showSettings);
@@ -492,3 +491,13 @@ function translateToEn() {
 // }
 
 // console.log(greetingTranslation.ru);
+
+//ToDo List
+const toDoIcon = document.querySelector('.to-do-icon');
+const toDoMenu = document.querySelector('.to-do-menu');
+
+function showToDoMenu() {
+  toDoMenu.classList.toggle('to-do-menu-visible');
+}
+
+toDoIcon.addEventListener('click', showToDoMenu);

@@ -414,6 +414,73 @@ label:hover{
 .year {
   opacity: 0.5;
 }
+.to-do-icon {
+  margin-right: 10px;
+}
+
+.to-do-icon:hover {
+  cursor: pointer;
+}
+
+.to-do-menu {
+  position: absolute;
+  bottom: 64px;
+  right: 20px;
+  padding: 16px;
+  width: 320px;
+  background-color: #ffffff;
+  color: #000000;
+  border-radius: 4px;
+  visibility: hidden;
+}
+
+.to-do-menu-visible {
+  visibility: visible;
+  transition: ease-in-out .3s;
+}
+
+.to-do-arrow {
+  position:absolute;
+  bottom: -32px;
+  right: 20px;
+  display: block;
+  width: 0;
+  height: 0;
+  margin: 0 auto 20px;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-top: 6px solid #ffffff;
+  background-color: transparent;
+}
+
+.to-do-title {
+  padding-bottom: 20px;
+  font-size: 18px;
+  text-align: left;
+}
+
+.to-do-list-wrapper {
+  padding: 20px;
+}
+
+.empty-item {
+  list-style: none;
+}
+
+.add-to-do-btn {
+  margin: 16px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  background-color:#4cbf3f;
+  color: #ffffff;
+}
+
+.add-to-do-btn:hover {
+  cursor: pointer;
+  background-color:#20531a
+}
 
 @media (max-width: 768px) {
   .time {
