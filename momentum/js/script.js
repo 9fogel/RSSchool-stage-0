@@ -520,15 +520,22 @@ function createToDoItem() {
   if (newToDo.value !== '' && newToDo.value !== ' ' && newToDo.value.trim() !== '') {
     const li = document.createElement('li');
     const label = document.createElement('label');
+    const span = document.querySelector('span');
     const checkbox = document.createElement('input');
+    const moreMenuItem = document.createElement('div');
     li.classList.add('to-do-item');
     li.classList.add('filled-item');
-    li.textContent = newToDo.value;
     toDoList.append(li);
     li.append(label);
+    li.append(span);
+    span.textContent = newToDo.value;
+    span.classList.add('filled-item-text');
+    // span.classList.remove('temperature');
+    li.append(moreMenuItem);
     label.append(checkbox);
     checkbox.classList.add('custom-checkbox');
     checkbox.setAttribute('type', 'checkbox');
+    moreMenuItem.classList.add('more-menu-item');
     newToDo.value = '';
     rememberCheckboxes();
   }
@@ -561,3 +568,16 @@ addToDoBtn.onclick = function () {
   addToDoBtn.classList.add('add-to-do-btn-hidden');
   emptyText.classList.add('empty-text-hidden');
 }
+
+const moreActionsIcon = document.querySelector('.more-actions');
+const dropdown = document.querySelector('.dropdown');
+// const moreMenuItem = document.querySelector('.more-menu-item');
+
+moreActionsIcon.onclick = function () {
+  dropdown.classList.toggle('drop-down-hidden');
+}
+
+// moreMenuItem.onclick = function () {
+//   console.log('More Actions Item');
+// }
+
