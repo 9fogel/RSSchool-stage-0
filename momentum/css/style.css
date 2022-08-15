@@ -454,18 +454,68 @@ label:hover{
   background-color: transparent;
 }
 
+.to-do-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
 .to-do-title {
-  padding-bottom: 20px;
   font-size: 18px;
   text-align: left;
+}
+
+.more-actions {
+  width: 29px;
+  height: 29px;
+  background-color: transparent;
+  background-image: url('../assets/svg/more-icon.svg');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+.more-actions:hover {
+  cursor: pointer;
+  width: 29px;
+  height: 29px;
+  background-color: #e7e3e3;
+  border-radius: 50%;
 }
 
 .to-do-list-wrapper {
   padding: 20px;
 }
 
+.to-do-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  list-style: none;
+  /* transition: ease-in-out .3s; */
+}
+
 .empty-item {
   list-style: none;
+}
+
+.filled-item {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.crossed-item {
+  text-decoration: line-through;
+  color: #7e7d7d;
+}
+
+.empty-text-hidden {
+  display: none;
 }
 
 .add-to-do-btn {
@@ -479,7 +529,42 @@ label:hover{
 
 .add-to-do-btn:hover {
   cursor: pointer;
-  background-color:#20531a
+  background-color:#20531a;
+}
+
+.add-to-do-btn-hidden {
+  display: none;
+  /* transition: ease-in-out .1s; */
+}
+
+.to-do-input {
+  padding: 10px;
+  width: 100%;
+  text-align: left;
+  border: 1px solid #c4c4c4;
+  border: none;
+  border-radius: 4px;
+  visibility: hidden;
+  /* transition: ease-in-out .3s; */
+}
+
+.to-do-input-visible {
+  visibility: visible;
+  /* transition: ease-in-out .3s; */
+}
+
+.to-do-input:focus {
+  outline:#4cbf3f;
+  background-color: #cdf7cd;
+  border: none;
+}
+
+.custom-checkbox {
+  width: 1em;
+  height: 1em;
+  /* position: absolute;
+  z-index: -1;
+  opacity: 0; */
 }
 
 @media (max-width: 768px) {

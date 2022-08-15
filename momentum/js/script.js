@@ -229,7 +229,11 @@ async function getWeather() {
 userCity.addEventListener('change', getWeather);
 
 function setLocalStorageCity() {
-  localStorage.setItem('userCity', userCity.value);
+  if(userCity.classList.contains('default')) {
+    console.log('Dont save to local storage');
+  } else {
+    localStorage.setItem('userCity', userCity.value);
+  }
 }
 
 window.addEventListener('beforeunload', setLocalStorageCity);
@@ -237,6 +241,7 @@ window.addEventListener('beforeunload', setLocalStorageCity);
 function getLocalStorageCity() {
   if (localStorage.getItem('userCity')) {
     userCity.value = localStorage.getItem('userCity');
+    userCity.classList.remove('default');
     getWeather();
   } 
   // else if (localStorage.getItem('userCity') === '') {
@@ -255,8 +260,10 @@ window.addEventListener('load', () => {
   if (localStorage.getItem('userCity') === '') {
       if (settingsState.language === 'en') {
         userCity.value = 'Minsk';
+        userCity.classList.add('default');
       } else if (settingsState.language === 'ru') {
         userCity.value = 'Минск';
+        userCity.classList.add('default');
       }
       getWeather();
   }
@@ -399,6 +406,11 @@ const radioEn = document.querySelector('.english-lang');
 const radioRu = document.querySelector('.russian-lang');
 const langTitle = document.querySelector('.lang-title');
 const langLabels = document.querySelectorAll('label');
+const toDoIcon = document.querySelector('.to-do-icon');
+const toDoTitle = document.querySelector('.to-do-title');
+const emptyText = document.querySelector('.empty-text');
+const addToDoBtn = document.querySelector('.add-to-do-btn');
+const newToDo = document.querySelector('.new-to-do');
 
 languages.forEach((lang, index) => {
   lang.onclick = function () {
@@ -443,6 +455,11 @@ function getLocalStorageSettings() {
       langTitle.textContent = 'Выберите язык';
       langLabels[0].textContent = 'Английский';
       langLabels[1].textContent = 'Русский';
+      toDoTitle.textContent = 'Сегодня';
+      emptyText.textContent = 'Добавьте новую задачу';
+      addToDoBtn.textContent = 'Добавить';
+      newToDo.setAttribute('placeholder', 'Введите описание задачи');
+      toDoIcon.textContent = 'Список дел';
     }
 }
 
@@ -452,10 +469,16 @@ function translateToRu() {
     langTitle.textContent = 'Выберите язык';
     langLabels[0].textContent = 'Английский';
     langLabels[1].textContent = 'Русский';
+    toDoTitle.textContent = 'Сегодня';
+    emptyText.textContent = 'Добавьте новую задачу';
+    addToDoBtn.textContent = 'Добавить';
+    newToDo.setAttribute('placeholder', 'Введите описание задачи');
+    toDoIcon.textContent = 'Список дел';
     getWeather();
     getLocalStorageCity();
     if (localStorage.getItem('userCity') === '') {
       userCity.value = 'Минск';
+      userCity.classList.add('default');
     }
     getQuotes();
 }
@@ -464,40 +487,77 @@ function translateToEn() {
   langTitle.textContent = 'Language';
   langLabels[0].textContent = 'English';
   langLabels[1].textContent = 'Russian';
+  toDoTitle.textContent = 'Today';
+  emptyText.textContent = 'Add a todo to get started';
+  addToDoBtn.textContent = 'New ToDo';
+  newToDo.setAttribute('placeholder', 'New ToDo');
+  toDoIcon.textContent = 'To Do';
   getWeather();
   getLocalStorageCity();
   if (localStorage.getItem('userCity') === '') {
     userCity.value = 'Minsk';
+    userCity.classList.add('default');
   }
   getQuotes();
 }
 
-//не переводится цитата
-
-
-// if(settingsState.language === 'en') {
-//   name.setAttribute('placeholder', '[Enter name]');
-//   userCity.value = 'Minsk';
-//   quotes = './assets/quotesEn.json';
-// } else if (settingsState.language === 'ru') {
-//   name.setAttribute('placeholder', '[Введите имя]');
-//   userCity.value = 'Минск';
-//   quotes = './assets/quotesRu.json';
-// };
-
-// const greetingTranslation = {
-//   en: greetingTextEn,
-//   ru: greetingTextRu,
-// }
-
-// console.log(greetingTranslation.ru);
 
 //ToDo List
-const toDoIcon = document.querySelector('.to-do-icon');
 const toDoMenu = document.querySelector('.to-do-menu');
+const toDoList = document.querySelector('.to-do-list')
 
 function showToDoMenu() {
   toDoMenu.classList.toggle('to-do-menu-visible');
+  newToDo.classList.remove('to-do-input-visible');
+  addToDoBtn.classList.remove('add-to-do-btn-hidden');
 }
 
 toDoIcon.addEventListener('click', showToDoMenu);
+
+// const newToDo = document.querySelector('.new-to-do');
+
+function createToDoItem() {
+  if (newToDo.value !== '' && newToDo.value !== ' ' && newToDo.value.trim() !== '') {
+    const li = document.createElement('li');
+    const label = document.createElement('label');
+    const checkbox = document.createElement('input');
+    li.classList.add('to-do-item');
+    li.classList.add('filled-item');
+    li.textContent = newToDo.value;
+    toDoList.append(li);
+    li.append(label);
+    label.append(checkbox);
+    checkbox.classList.add('custom-checkbox');
+    checkbox.setAttribute('type', 'checkbox');
+    newToDo.value = '';
+    rememberCheckboxes();
+  }
+}
+
+newToDo.addEventListener('change', createToDoItem);
+
+function rememberCheckboxes() {
+  const checkboxes = document.querySelectorAll('.custom-checkbox');
+  checkboxes.forEach((checkbox) => {
+    checkbox.onclick = function () {
+      if (checkbox.classList.contains('checked')) {
+        checkbox.removeAttribute('checked');
+        checkbox.classList.remove('checked');
+        (checkbox.parentNode).parentNode.classList.remove('crossed-item');
+      } else {
+        checkbox.setAttribute('checked', 'checked');
+        checkbox.classList.add('checked');
+        (checkbox.parentNode).parentNode.classList.add('crossed-item');
+        console.log('line-through');
+        console.log((checkbox.parentNode).parentNode);
+      }
+    }
+  })
+  console.log(checkboxes);
+}
+
+addToDoBtn.onclick = function () {
+  newToDo.classList.add('to-do-input-visible');
+  addToDoBtn.classList.add('add-to-do-btn-hidden');
+  emptyText.classList.add('empty-text-hidden');
+}
