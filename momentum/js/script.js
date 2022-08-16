@@ -227,13 +227,12 @@ async function getWeather() {
 }
 
 userCity.addEventListener('change', getWeather);
+userCity.onchange = function () {
+  userCity.classList.remove('default');
+}
 
 function setLocalStorageCity() {
-  if(userCity.classList.contains('default')) {
-    console.log('Dont save to local storage');
-  } else {
     localStorage.setItem('userCity', userCity.value);
-  }
 }
 
 window.addEventListener('beforeunload', setLocalStorageCity);
@@ -423,7 +422,6 @@ languages.forEach((lang, index) => {
     radioBtns[index].setAttribute('checked', 'checked');
     radioBtns[index].classList.add('checked');
     settingsState.language = radioBtns[index].value;
-    console.log(settingsState.language);
     setLocalStorageSettings();
     getLocalStorageSettings();
     getQuotes();
@@ -431,11 +429,15 @@ languages.forEach((lang, index) => {
       getLocalStorageCity();
       getLocalStorage();
       translateToRu();
+      showDate();
+      showGreeting();
     }
     if (settingsState.language === 'en') {
       getLocalStorageCity();
       getLocalStorage();
       translateToEn();
+      showDate();
+      showGreeting();
     }
   }
 });
@@ -476,7 +478,7 @@ function translateToRu() {
     toDoIcon.textContent = 'Список дел';
     getWeather();
     getLocalStorageCity();
-    if (localStorage.getItem('userCity') === '') {
+    if (localStorage.getItem('userCity') === '' && userCity.classList.contains('default')) {
       userCity.value = 'Минск';
       userCity.classList.add('default');
     }
@@ -494,7 +496,7 @@ function translateToEn() {
   toDoIcon.textContent = 'To Do';
   getWeather();
   getLocalStorageCity();
-  if (localStorage.getItem('userCity') === '') {
+  if (localStorage.getItem('userCity') === '' && userCity.classList.contains('default')) {
     userCity.value = 'Minsk';
     userCity.classList.add('default');
   }
@@ -555,12 +557,9 @@ function rememberCheckboxes() {
         checkbox.setAttribute('checked', 'checked');
         checkbox.classList.add('checked');
         (checkbox.parentNode).parentNode.classList.add('crossed-item');
-        console.log('line-through');
-        console.log((checkbox.parentNode).parentNode);
       }
     }
   })
-  console.log(checkboxes);
 }
 
 addToDoBtn.onclick = function () {
@@ -571,13 +570,8 @@ addToDoBtn.onclick = function () {
 
 const moreActionsIcon = document.querySelector('.more-actions');
 const dropdown = document.querySelector('.dropdown');
-// const moreMenuItem = document.querySelector('.more-menu-item');
 
 moreActionsIcon.onclick = function () {
   dropdown.classList.toggle('drop-down-hidden');
 }
-
-// moreMenuItem.onclick = function () {
-//   console.log('More Actions Item');
-// }
 
